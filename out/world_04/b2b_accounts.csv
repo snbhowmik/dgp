@@ -1,0 +1,9 @@
+account_id,account_type,region_id,regions_served,outlets_count,status,onboarded_date,contract_start,contract_end,committed_kg_per_month,contract_price_inr_per_kg,shortfall_penalty_inr_per_kg,requested_start_date,requested_kg_per_month
+ACC-REST-301,restaurant,reg_delhi_ncr,reg_delhi_ncr,3,active,2022-01-31,2022-01-31,2024-12-30,400.00,685.00,130.00,,
+ACC-REST-302,restaurant,reg_mumbai,reg_mumbai,2,active,2022-02-28,2022-02-28,2024-12-30,350.00,690.00,130.00,,
+ACC-HOTEL-301,hotel,reg_bengaluru,reg_bengaluru,1,active,2022-03-28,2022-03-28,2024-12-30,550.00,670.00,160.00,,
+ACC-QSR-301,qsr_chain,reg_mumbai,reg_mumbai|reg_pune,7,active,2022-05-09,2022-05-09,2024-12-30,1300.00,635.00,210.00,,
+ACC-DIST-301,distributor,reg_delhi_ncr,reg_delhi_ncr|reg_kolkata,12,active,2022-06-27,2022-06-27,2024-12-30,1700.00,605.00,220.00,,
+ACC-CATR-301,caterer,reg_hyderabad,reg_hyderabad,1,churned,2022-08-15,2022-08-15,2023-05-22,450.00,680.00,120.00,,
+ACC-REST-303,restaurant,reg_chennai,reg_chennai,1,paused,2022-10-10,2022-10-10,2024-12-30,250.00,700.00,105.00,,
+ACC-PIPE-301,qsr_chain,reg_hyderabad,reg_hyderabad,5,pipeline,,,,,,,2025-01-13,900.00

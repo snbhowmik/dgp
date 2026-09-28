@@ -1,0 +1,356 @@
+world_name: cfg_structural_break
+description: >
+  Major structural break midway through history (Week 78). Six new Tier-1 and Tier-2 regional cold-chain
+  routes open simultaneously with the commercial launch of the Mycelium product line (SKU-MYC-500G).
+  Demand and capacity scale dramatically in the second half of history, shifting channel economics and regional mix.
+history_weeks: 182
+start_date: "2022-01-03"
+plan_weeks_ahead: 13
+
+demand_growth_rate_annual: 0.22
+seasonality_sensitivity: 0.90
+wom_strength: 0.06
+d2c_repeat_rate: 0.40
+d2c_subscriber_fraction: 0.14
+ops_capacity_buffer: 1.15
+coman_activation_threshold: 0.85
+marketing_responsiveness: 1.10
+nps_baseline: 8.5
+
+regions:
+  - region_id: reg_delhi_ncr
+    region_name: Delhi NCR
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.40
+  - region_id: reg_mumbai
+    region_name: Mumbai
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.45
+  - region_id: reg_bengaluru
+    region_name: Bengaluru
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.30
+  - region_id: reg_hyderabad
+    region_name: Hyderabad
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.10
+  - region_id: reg_chennai
+    region_name: Chennai
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.00
+  - region_id: reg_pune
+    region_name: Pune
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.85
+  - region_id: reg_kolkata
+    region_name: Kolkata
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.90
+  - region_id: reg_ahmedabad
+    region_name: Ahmedabad
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.80
+  - region_id: reg_jaipur
+    region_name: Jaipur
+    tier: tier2
+    cold_chain_available: true
+    market_weight: 0.70
+  - region_id: reg_chandigarh
+    region_name: Chandigarh
+    tier: tier2
+    cold_chain_available: true
+    market_weight: 0.75
+  - region_id: reg_lucknow
+    region_name: Lucknow
+    tier: tier2
+    cold_chain_available: true
+    market_weight: 0.65
+  - region_id: reg_kochi
+    region_name: Kochi
+    tier: tier2
+    cold_chain_available: true
+    market_weight: 0.60
+
+skus:
+  - sku_id: SKU-CHK-500G
+    product_line: cultivated_chicken
+    pack_size_kg: 0.50
+    status: production
+    expected_launch_date: "2022-01-03"
+    shelf_life_days: 21
+    unit_cost_inr_per_kg: 415.00
+    list_price_d2c_inr_per_kg: 899.00
+  - sku_id: SKU-CHK-1KG
+    product_line: cultivated_chicken
+    pack_size_kg: 1.00
+    status: production
+    expected_launch_date: "2022-01-03"
+    shelf_life_days: 21
+    unit_cost_inr_per_kg: 385.00
+    list_price_d2c_inr_per_kg: 799.00
+  - sku_id: SKU-MYC-500G
+    product_line: mycelium
+    pack_size_kg: 0.50
+    status: pilot
+    expected_launch_date: "2023-07-03"
+    shelf_life_days: 28
+    unit_cost_inr_per_kg: 330.00
+    list_price_d2c_inr_per_kg: 699.00
+  - sku_id: SKU-SEA-250G
+    product_line: seaweed
+    pack_size_kg: 0.25
+    status: rnd
+    expected_launch_date: null
+    shelf_life_days: 45
+    unit_cost_inr_per_kg: 450.00
+    list_price_d2c_inr_per_kg: 950.00
+
+product_matrix_rules:
+  - sku_id: SKU-CHK-500G
+    channel: D2C
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-CHK-1KG
+    channel: D2C
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-CHK-1KG
+    channel: B2B
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-MYC-500G
+    channel: D2C
+    region_id: METRO_ONLY
+    eligible_from: "2023-07-03"
+    eligible_to: null
+  - sku_id: SKU-MYC-500G
+    channel: B2B
+    region_id: METRO_ONLY
+    eligible_from: "2023-07-03"
+    eligible_to: null
+
+facilities:
+  - facility_id: FAC-BLR-01
+    product_line: cultivated_chicken
+    nominal_batches_per_week: 4
+    planned_yield_per_batch_kg: 480.00
+    cycle_days: 7
+    failure_rate: 0.04
+    partial_rate: 0.07
+    yield_std_pct: 0.06
+  - facility_id: FAC-PUN-01
+    product_line: cultivated_chicken
+    nominal_batches_per_week: 3
+    planned_yield_per_batch_kg: 380.00
+    cycle_days: 7
+    failure_rate: 0.04
+    partial_rate: 0.07
+    yield_std_pct: 0.07
+  - facility_id: FAC-HYD-01
+    product_line: mycelium
+    nominal_batches_per_week: 2
+    planned_yield_per_batch_kg: 350.00
+    cycle_days: 7
+    failure_rate: 0.03
+    partial_rate: 0.05
+    yield_std_pct: 0.05
+
+coman_contracts:
+  - coman_id: COMAN-PUN-01
+    product_line: cultivated_chicken
+    available_from: "2022-03-01"
+    lead_time_weeks: 2
+    min_commit_kg_per_week: 250.00
+    max_kg_per_week: 900.00
+    unit_cost_inr_per_kg: 515.00
+    min_active_weeks: 4
+    reliability: 0.96
+
+marketing_campaigns:
+  - channel: D2C
+    campaign_type: ppc
+    campaign_id: CMP-D2C-SEARCH-CORE
+    base_weekly_spend_inr: 50000.0
+    cost_per_click_inr: 26.0
+    click_to_visitor_rate: 0.88
+    bounce_rate: 0.30
+    lead_conversion_rate: 0.15
+    qualified_lead_rate: 0.72
+    sale_conversion_rate: 0.38
+    attribution_inflation: 1.25
+  - channel: D2C
+    campaign_type: social
+    campaign_id: CMP-D2C-SOC-CORE
+    base_weekly_spend_inr: 65000.0
+    cost_per_click_inr: 17.0
+    click_to_visitor_rate: 0.83
+    bounce_rate: 0.40
+    lead_conversion_rate: 0.10
+    qualified_lead_rate: 0.62
+    sale_conversion_rate: 0.30
+    attribution_inflation: 1.40
+  - channel: D2C
+    campaign_type: native
+    campaign_id: CMP-D2C-NAT-CORE
+    base_weekly_spend_inr: 28000.0
+    cost_per_click_inr: 21.0
+    click_to_visitor_rate: 0.85
+    bounce_rate: 0.36
+    lead_conversion_rate: 0.12
+    qualified_lead_rate: 0.66
+    sale_conversion_rate: 0.32
+    attribution_inflation: 1.20
+  - channel: D2C
+    campaign_type: influencer
+    campaign_id: CMP-D2C-INF-CORE
+    base_weekly_spend_inr: 40000.0
+    cost_per_click_inr: 30.0
+    click_to_visitor_rate: 0.91
+    bounce_rate: 0.26
+    lead_conversion_rate: 0.17
+    qualified_lead_rate: 0.76
+    sale_conversion_rate: 0.44
+    attribution_inflation: 1.50
+  - channel: D2C
+    campaign_type: email
+    campaign_id: CMP-D2C-EML-CORE
+    base_weekly_spend_inr: 9000.0
+    cost_per_click_inr: 5.5
+    click_to_visitor_rate: 0.95
+    bounce_rate: 0.18
+    lead_conversion_rate: 0.24
+    qualified_lead_rate: 0.86
+    sale_conversion_rate: 0.56
+    attribution_inflation: 1.10
+  - channel: B2B
+    campaign_type: trade
+    campaign_id: CMP-B2B-TRD-CORE
+    base_weekly_spend_inr: 45000.0
+    cost_per_click_inr: 82.0
+    click_to_visitor_rate: 0.91
+    bounce_rate: 0.24
+    lead_conversion_rate: 0.19
+    qualified_lead_rate: 0.82
+    sale_conversion_rate: 0.36
+    attribution_inflation: 1.18
+
+b2b_accounts:
+  - account_id: ACC-REST-401
+    account_type: restaurant
+    region_id: reg_delhi_ncr
+    regions_served: [reg_delhi_ncr]
+    outlets_count: 3
+    onboard_week_offset: 3
+    contract_duration_weeks: 178
+    committed_kg_per_month: 500.0
+    contract_price_inr_per_kg: 680.0
+    shortfall_penalty_inr_per_kg: 125.0
+    status_at_end: active
+  - account_id: ACC-REST-402
+    account_type: restaurant
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai]
+    outlets_count: 2
+    onboard_week_offset: 7
+    contract_duration_weeks: 174
+    committed_kg_per_month: 400.0
+    contract_price_inr_per_kg: 685.0
+    shortfall_penalty_inr_per_kg: 125.0
+    status_at_end: active
+  - account_id: ACC-HOTEL-401
+    account_type: hotel
+    region_id: reg_bengaluru
+    regions_served: [reg_bengaluru]
+    outlets_count: 2
+    onboard_week_offset: 14
+    contract_duration_weeks: 167
+    committed_kg_per_month: 700.0
+    contract_price_inr_per_kg: 665.0
+    shortfall_penalty_inr_per_kg: 155.0
+    status_at_end: active
+  - account_id: ACC-QSR-401
+    account_type: qsr_chain
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai, reg_pune]
+    outlets_count: 9
+    onboard_week_offset: 22
+    contract_duration_weeks: 159
+    committed_kg_per_month: 1500.0
+    contract_price_inr_per_kg: 630.0
+    shortfall_penalty_inr_per_kg: 195.0
+    status_at_end: active
+  - account_id: ACC-DIST-401
+    account_type: distributor
+    region_id: reg_delhi_ncr
+    regions_served: [reg_delhi_ncr, reg_jaipur, reg_chandigarh]
+    outlets_count: 18
+    onboard_week_offset: 30
+    contract_duration_weeks: 151
+    committed_kg_per_month: 2200.0
+    contract_price_inr_per_kg: 600.0
+    shortfall_penalty_inr_per_kg: 215.0
+    status_at_end: active
+  - account_id: ACC-CATR-401
+    account_type: caterer
+    region_id: reg_hyderabad
+    regions_served: [reg_hyderabad]
+    outlets_count: 1
+    onboard_week_offset: 38
+    contract_duration_weeks: 45
+    committed_kg_per_month: 450.0
+    contract_price_inr_per_kg: 685.0
+    shortfall_penalty_inr_per_kg: 115.0
+    status_at_end: churned
+    churn_week_offset: 83
+  - account_id: ACC-REST-403
+    account_type: restaurant
+    region_id: reg_chennai
+    regions_served: [reg_chennai]
+    outlets_count: 2
+    onboard_week_offset: 46
+    contract_duration_weeks: 135
+    committed_kg_per_month: 300.0
+    contract_price_inr_per_kg: 695.0
+    shortfall_penalty_inr_per_kg: 110.0
+    status_at_end: active
+  - account_id: ACC-REST-404
+    account_type: restaurant
+    region_id: reg_lucknow
+    regions_served: [reg_lucknow]
+    outlets_count: 1
+    onboard_week_offset: 82
+    contract_duration_weeks: 99
+    committed_kg_per_month: 250.0
+    contract_price_inr_per_kg: 705.0
+    shortfall_penalty_inr_per_kg: 100.0
+    status_at_end: active
+  - account_id: ACC-PIPE-401
+    account_type: hotel
+    region_id: reg_kochi
+    regions_served: [reg_kochi]
+    outlets_count: 1
+    onboard_week_offset: 186
+    contract_duration_weeks: 52
+    committed_kg_per_month: 350.0
+    contract_price_inr_per_kg: 690.0
+    shortfall_penalty_inr_per_kg: 110.0
+    status_at_end: pipeline
+
+shocks:
+  - name: "Regulatory Cold-Chain Milestone & Route Expansion"
+    start_week: 78
+    duration_weeks: 8
+    event_type: demand_surge
+    impact_factor: 1.45
+    description: "Cold-chain infrastructure opening expands addressable market into new Tier-1 and Tier-2 clusters."

@@ -1,0 +1,2 @@
+coman_id,product_line,available_from,lead_time_weeks,min_commit_kg_per_week,max_kg_per_week,unit_cost_inr_per_kg,min_active_weeks
+COMAN-PUN-01,cultivated_chicken,2022-06-01,3,250.00,800.00,520.00,4

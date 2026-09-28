@@ -1,0 +1,5 @@
+sku_id,product_line,pack_size_kg,status,expected_launch_date,shelf_life_days,unit_cost_inr_per_kg,list_price_d2c_inr_per_kg
+SKU-CHK-500G,cultivated_chicken,0.5,production,2022-01-03,21,415.00,899.00
+SKU-CHK-1KG,cultivated_chicken,1,production,2022-01-03,21,385.00,799.00
+SKU-MYC-500G,mycelium,0.5,pilot,2023-07-03,28,330.00,699.00
+SKU-SEA-250G,seaweed,0.25,rnd,,45,450.00,950.00

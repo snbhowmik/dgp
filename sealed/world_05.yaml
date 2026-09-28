@@ -1,0 +1,67 @@
+world_id: world_05
+internal_config_name: cfg_structural_break
+seed: 42005
+description: 'Major structural break midway through history (Week 78). Six new Tier-1
+  and Tier-2 regional cold-chain routes open simultaneously with the commercial launch
+  of the Mycelium product line (SKU-MYC-500G). Demand and capacity scale dramatically
+  in the second half of history, shifting channel economics and regional mix.
+
+  '
+blind_assignment_note: 'Structural break midway: cold-chain regulatory opening into
+  new regions and mycelium commercial pilot launch'
+core_mechanics:
+  demand_growth_rate_annual: 0.22
+  seasonality_sensitivity: 0.9
+  word_of_mouth_strength: 0.06
+  d2c_repeat_rate: 0.4
+  d2c_subscriber_fraction: 0.14
+  coman_activation_threshold: 0.85
+  marketing_responsiveness: 1.1
+  nps_baseline: 8.5
+notable_events_and_shocks:
+- event_name: Regulatory Cold-Chain Milestone & Route Expansion
+  event_type: demand_surge
+  start_week: 78
+  duration_weeks: 8
+  impact_multiplier: 1.45
+  description: Cold-chain infrastructure opening expands addressable market into new
+    Tier-1 and Tier-2 clusters.
+- event_name: 'Product Launch / Pilot: SKU-MYC-500G'
+  event_type: product_launch
+  launch_date: '2023-07-03'
+  product_line: mycelium
+  description: Introduction of mycelium (SKU-MYC-500G) into designated regional cold
+    chains.
+facilities:
+- facility_id: FAC-BLR-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 4
+  planned_yield_per_batch_kg: 480.0
+  base_failure_rate: 0.04
+  base_partial_rate: 0.07
+- facility_id: FAC-PUN-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 3
+  planned_yield_per_batch_kg: 380.0
+  base_failure_rate: 0.04
+  base_partial_rate: 0.07
+- facility_id: FAC-HYD-01
+  product_line: mycelium
+  nominal_batches_per_week: 2
+  planned_yield_per_batch_kg: 350.0
+  base_failure_rate: 0.03
+  base_partial_rate: 0.05
+coman_partners:
+- coman_id: COMAN-PUN-01
+  product_line: cultivated_chicken
+  available_from: '2022-03-01'
+  lead_time_weeks: 2
+  min_commit_kg_per_week: 250.0
+  max_kg_per_week: 900.0
+  unit_cost_inr_per_kg: 515.0
+b2b_accounts_summary:
+  total_accounts: 9
+  pipeline_count: 1
+  active_count: 7
+  churned_count: 1
+  paused_count: 0

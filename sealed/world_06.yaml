@@ -1,0 +1,57 @@
+world_id: world_06
+internal_config_name: cfg_b2b_concentration
+seed: 42006
+description: 'High B2B wholesale concentration and severe channel allocation conflict.
+  Over 65% of total volume is locked into major QSR chains and wholesale distributors
+  carrying heavy shortfall penalties. Whenever bioreactor batches fluctuate, in-house
+  inventory is prioritized to avoid B2B penalties, leaving D2C e-commerce heavily
+  censored (stockouts, partials, waitlists) and causing D2C churn. An unexpected mid-history
+  contract churn at Week 75 creates a sudden inventory surplus and perishable spoilage.
+
+  '
+blind_assignment_note: High B2B account concentration with massive QSR chains, shortfall
+  penalties, and severe channel allocation conflict
+core_mechanics:
+  demand_growth_rate_annual: 0.18
+  seasonality_sensitivity: 0.8
+  word_of_mouth_strength: 0.03
+  d2c_repeat_rate: 0.3
+  d2c_subscriber_fraction: 0.08
+  coman_activation_threshold: 0.8
+  marketing_responsiveness: 0.95
+  nps_baseline: 8.0
+notable_events_and_shocks:
+- event_name: Major Catering Contract Churn & Inventory Dislocation
+  event_type: demand_surge
+  start_week: 75
+  duration_weeks: 5
+  impact_multiplier: 0.8
+  description: Abrupt termination of high-volume caterer contract creates short-term
+    inventory overhang.
+facilities:
+- facility_id: FAC-BLR-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 4
+  planned_yield_per_batch_kg: 520.0
+  base_failure_rate: 0.04
+  base_partial_rate: 0.07
+- facility_id: FAC-PUN-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 3
+  planned_yield_per_batch_kg: 420.0
+  base_failure_rate: 0.04
+  base_partial_rate: 0.08
+coman_partners:
+- coman_id: COMAN-PUN-01
+  product_line: cultivated_chicken
+  available_from: '2022-03-01'
+  lead_time_weeks: 3
+  min_commit_kg_per_week: 300.0
+  max_kg_per_week: 1100.0
+  unit_cost_inr_per_kg: 510.0
+b2b_accounts_summary:
+  total_accounts: 8
+  pipeline_count: 1
+  active_count: 5
+  churned_count: 1
+  paused_count: 1

@@ -1,0 +1,63 @@
+world_id: world_04
+internal_config_name: cfg_production_bottleneck
+seed: 42004
+description: 'Chronic production uncertainty and severe supply bottleneck. Higher
+  base bioreactor failure and contamination rates (7% fail, 12% partial), punctuated
+  by a severe monsoon media contamination shock between Weeks 60 and 70. Forces emergency
+  co-manufacturing activation at premium costs. Demand frequently crashes against
+  the hard output ceiling, creating widespread order waitlisting and stockouts.
+
+  '
+blind_assignment_note: Severe bioreactor yield volatility, summer contamination shocks,
+  and heavy co-man reliance under shortfall pressure
+core_mechanics:
+  demand_growth_rate_annual: 0.16
+  seasonality_sensitivity: 0.95
+  word_of_mouth_strength: 0.04
+  d2c_repeat_rate: 0.32
+  d2c_subscriber_fraction: 0.1
+  coman_activation_threshold: 0.78
+  marketing_responsiveness: 0.85
+  nps_baseline: 7.9
+notable_events_and_shocks:
+- event_name: Monsoon Bioreactor Contamination & Media Crisis
+  event_type: supply_disruption
+  start_week: 62
+  duration_weeks: 10
+  impact_multiplier: 2.4
+  description: Contamination in raw growth media causes elevated batch failures across
+    in-house bioreactors.
+facilities:
+- facility_id: FAC-BLR-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 3
+  planned_yield_per_batch_kg: 420.0
+  base_failure_rate: 0.07
+  base_partial_rate: 0.12
+- facility_id: FAC-PUN-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 2
+  planned_yield_per_batch_kg: 340.0
+  base_failure_rate: 0.08
+  base_partial_rate: 0.14
+coman_partners:
+- coman_id: COMAN-BLR-01
+  product_line: cultivated_chicken
+  available_from: '2022-02-01'
+  lead_time_weeks: 3
+  min_commit_kg_per_week: 250.0
+  max_kg_per_week: 900.0
+  unit_cost_inr_per_kg: 560.0
+- coman_id: COMAN-PUN-02
+  product_line: cultivated_chicken
+  available_from: '2022-08-01'
+  lead_time_weeks: 4
+  min_commit_kg_per_week: 300.0
+  max_kg_per_week: 1100.0
+  unit_cost_inr_per_kg: 575.0
+b2b_accounts_summary:
+  total_accounts: 8
+  pipeline_count: 1
+  active_count: 5
+  churned_count: 1
+  paused_count: 1

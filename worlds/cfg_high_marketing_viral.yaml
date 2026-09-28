@@ -1,0 +1,355 @@
+world_name: cfg_high_marketing_viral
+description: >
+  High marketing responsiveness and explosive organic virality. Digital campaigns yield low CPCs
+  and high lead conversion. Powerful word-of-mouth referral loops and two massive crowdsourced viral content
+  surges at Week 40 and Week 92 cause sudden demand spikes that strain inventory and cause temporary order waitlists.
+history_weeks: 156
+start_date: "2022-01-03"
+plan_weeks_ahead: 13
+
+demand_growth_rate_annual: 0.26
+seasonality_sensitivity: 0.90
+wom_strength: 0.12
+d2c_repeat_rate: 0.46
+d2c_subscriber_fraction: 0.22
+ops_capacity_buffer: 1.10
+coman_activation_threshold: 0.82
+marketing_responsiveness: 1.35
+nps_baseline: 8.8
+
+regions:
+  - region_id: reg_delhi_ncr
+    region_name: Delhi NCR
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.50
+  - region_id: reg_mumbai
+    region_name: Mumbai
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.60
+  - region_id: reg_bengaluru
+    region_name: Bengaluru
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.45
+  - region_id: reg_hyderabad
+    region_name: Hyderabad
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.10
+  - region_id: reg_chennai
+    region_name: Chennai
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.00
+  - region_id: reg_pune
+    region_name: Pune
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.90
+  - region_id: reg_kolkata
+    region_name: Kolkata
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.85
+  - region_id: reg_ahmedabad
+    region_name: Ahmedabad
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.80
+  - region_id: reg_jaipur
+    region_name: Jaipur
+    tier: tier2
+    cold_chain_available: true
+    market_weight: 0.65
+  - region_id: reg_chandigarh
+    region_name: Chandigarh
+    tier: tier2
+    cold_chain_available: true
+    market_weight: 0.70
+
+skus:
+  - sku_id: SKU-CHK-500G
+    product_line: cultivated_chicken
+    pack_size_kg: 0.50
+    status: production
+    expected_launch_date: "2022-01-03"
+    shelf_life_days: 21
+    unit_cost_inr_per_kg: 410.00
+    list_price_d2c_inr_per_kg: 899.00
+  - sku_id: SKU-CHK-1KG
+    product_line: cultivated_chicken
+    pack_size_kg: 1.00
+    status: production
+    expected_launch_date: "2022-01-03"
+    shelf_life_days: 21
+    unit_cost_inr_per_kg: 380.00
+    list_price_d2c_inr_per_kg: 799.00
+  - sku_id: SKU-SEA-250G
+    product_line: seaweed
+    pack_size_kg: 0.25
+    status: pilot
+    expected_launch_date: "2023-04-03"
+    shelf_life_days: 45
+    unit_cost_inr_per_kg: 480.00
+    list_price_d2c_inr_per_kg: 999.00
+
+product_matrix_rules:
+  - sku_id: SKU-CHK-500G
+    channel: D2C
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-CHK-1KG
+    channel: D2C
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-CHK-1KG
+    channel: B2B
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-SEA-250G
+    channel: D2C
+    region_id: METRO_ONLY
+    eligible_from: "2023-04-03"
+    eligible_to: null
+
+facilities:
+  - facility_id: FAC-BLR-01
+    product_line: cultivated_chicken
+    nominal_batches_per_week: 4
+    planned_yield_per_batch_kg: 500.00
+    cycle_days: 7
+    failure_rate: 0.03
+    partial_rate: 0.06
+    yield_std_pct: 0.05
+  - facility_id: FAC-PUN-01
+    product_line: cultivated_chicken
+    nominal_batches_per_week: 3
+    planned_yield_per_batch_kg: 400.00
+    cycle_days: 7
+    failure_rate: 0.04
+    partial_rate: 0.07
+    yield_std_pct: 0.06
+
+coman_contracts:
+  - coman_id: COMAN-HYD-01
+    product_line: cultivated_chicken
+    available_from: "2022-03-01"
+    lead_time_weeks: 2
+    min_commit_kg_per_week: 300.00
+    max_kg_per_week: 1200.00
+    unit_cost_inr_per_kg: 510.00
+    min_active_weeks: 4
+    reliability: 0.98
+
+marketing_campaigns:
+  - channel: D2C
+    campaign_type: social
+    campaign_id: CMP-D2C-SOC-SHORTVID
+    base_weekly_spend_inr: 85000.0
+    cost_per_click_inr: 12.5
+    click_to_visitor_rate: 0.89
+    bounce_rate: 0.28
+    lead_conversion_rate: 0.16
+    qualified_lead_rate: 0.72
+    sale_conversion_rate: 0.40
+    attribution_inflation: 1.55
+  - channel: D2C
+    campaign_type: influencer
+    campaign_id: CMP-D2C-FIT-CREATOR
+    base_weekly_spend_inr: 65000.0
+    cost_per_click_inr: 19.0
+    click_to_visitor_rate: 0.92
+    bounce_rate: 0.22
+    lead_conversion_rate: 0.20
+    qualified_lead_rate: 0.80
+    sale_conversion_rate: 0.48
+    attribution_inflation: 1.60
+  - channel: D2C
+    campaign_type: ppc
+    campaign_id: CMP-D2C-SEARCH-HIGH
+    base_weekly_spend_inr: 50000.0
+    cost_per_click_inr: 24.0
+    click_to_visitor_rate: 0.90
+    bounce_rate: 0.26
+    lead_conversion_rate: 0.17
+    qualified_lead_rate: 0.78
+    sale_conversion_rate: 0.42
+    attribution_inflation: 1.30
+  - channel: D2C
+    campaign_type: native
+    campaign_id: CMP-D2C-NAT-STORIES
+    base_weekly_spend_inr: 30000.0
+    cost_per_click_inr: 16.0
+    click_to_visitor_rate: 0.86
+    bounce_rate: 0.34
+    lead_conversion_rate: 0.12
+    qualified_lead_rate: 0.68
+    sale_conversion_rate: 0.32
+    attribution_inflation: 1.25
+  - channel: D2C
+    campaign_type: email
+    campaign_id: CMP-D2C-EML-ADVOCATE
+    base_weekly_spend_inr: 12000.0
+    cost_per_click_inr: 5.0
+    click_to_visitor_rate: 0.96
+    bounce_rate: 0.15
+    lead_conversion_rate: 0.26
+    qualified_lead_rate: 0.88
+    sale_conversion_rate: 0.60
+    attribution_inflation: 1.10
+  - channel: B2B
+    campaign_type: trade
+    campaign_id: CMP-B2B-EXP-HORECA
+    base_weekly_spend_inr: 45000.0
+    cost_per_click_inr: 75.0
+    click_to_visitor_rate: 0.92
+    bounce_rate: 0.22
+    lead_conversion_rate: 0.20
+    qualified_lead_rate: 0.82
+    sale_conversion_rate: 0.38
+    attribution_inflation: 1.20
+
+b2b_accounts:
+  - account_id: ACC-REST-101
+    account_type: restaurant
+    region_id: reg_delhi_ncr
+    regions_served: [reg_delhi_ncr]
+    outlets_count: 4
+    onboard_week_offset: 2
+    contract_duration_weeks: 154
+    committed_kg_per_month: 600.0
+    contract_price_inr_per_kg: 675.0
+    shortfall_penalty_inr_per_kg: 130.0
+    status_at_end: active
+  - account_id: ACC-REST-102
+    account_type: restaurant
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai]
+    outlets_count: 3
+    onboard_week_offset: 5
+    contract_duration_weeks: 151
+    committed_kg_per_month: 500.0
+    contract_price_inr_per_kg: 680.0
+    shortfall_penalty_inr_per_kg: 130.0
+    status_at_end: active
+  - account_id: ACC-HOTEL-101
+    account_type: hotel
+    region_id: reg_bengaluru
+    regions_served: [reg_bengaluru]
+    outlets_count: 2
+    onboard_week_offset: 8
+    contract_duration_weeks: 148
+    committed_kg_per_month: 800.0
+    contract_price_inr_per_kg: 660.0
+    shortfall_penalty_inr_per_kg: 160.0
+    status_at_end: active
+  - account_id: ACC-QSR-101
+    account_type: qsr_chain
+    region_id: reg_delhi_ncr
+    regions_served: [reg_delhi_ncr, reg_jaipur, reg_chandigarh]
+    outlets_count: 14
+    onboard_week_offset: 14
+    contract_duration_weeks: 142
+    committed_kg_per_month: 2200.0
+    contract_price_inr_per_kg: 620.0
+    shortfall_penalty_inr_per_kg: 210.0
+    status_at_end: active
+  - account_id: ACC-DIST-101
+    account_type: distributor
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai, reg_pune, reg_ahmedabad]
+    outlets_count: 20
+    onboard_week_offset: 22
+    contract_duration_weeks: 134
+    committed_kg_per_month: 2500.0
+    contract_price_inr_per_kg: 595.0
+    shortfall_penalty_inr_per_kg: 220.0
+    status_at_end: active
+  - account_id: ACC-REST-103
+    account_type: restaurant
+    region_id: reg_hyderabad
+    regions_served: [reg_hyderabad]
+    outlets_count: 2
+    onboard_week_offset: 28
+    contract_duration_weeks: 128
+    committed_kg_per_month: 350.0
+    contract_price_inr_per_kg: 690.0
+    shortfall_penalty_inr_per_kg: 120.0
+    status_at_end: active
+  - account_id: ACC-CATR-101
+    account_type: caterer
+    region_id: reg_chennai
+    regions_served: [reg_chennai]
+    outlets_count: 1
+    onboard_week_offset: 34
+    contract_duration_weeks: 122
+    committed_kg_per_month: 450.0
+    contract_price_inr_per_kg: 680.0
+    shortfall_penalty_inr_per_kg: 110.0
+    status_at_end: active
+  - account_id: ACC-REST-104
+    account_type: restaurant
+    region_id: reg_kolkata
+    regions_served: [reg_kolkata]
+    outlets_count: 2
+    onboard_week_offset: 42
+    contract_duration_weeks: 114
+    committed_kg_per_month: 300.0
+    contract_price_inr_per_kg: 695.0
+    shortfall_penalty_inr_per_kg: 110.0
+    status_at_end: active
+  - account_id: ACC-HOTEL-102
+    account_type: hotel
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai]
+    outlets_count: 1
+    onboard_week_offset: 50
+    contract_duration_weeks: 40
+    committed_kg_per_month: 600.0
+    contract_price_inr_per_kg: 670.0
+    shortfall_penalty_inr_per_kg: 140.0
+    status_at_end: churned
+    churn_week_offset: 90
+  - account_id: ACC-REST-105
+    account_type: restaurant
+    region_id: reg_pune
+    regions_served: [reg_pune]
+    outlets_count: 1
+    onboard_week_offset: 58
+    contract_duration_weeks: 98
+    committed_kg_per_month: 250.0
+    contract_price_inr_per_kg: 700.0
+    shortfall_penalty_inr_per_kg: 100.0
+    status_at_end: paused
+    pause_week_start: 95
+    pause_week_end: 110
+  - account_id: ACC-PIPE-101
+    account_type: qsr_chain
+    region_id: reg_bengaluru
+    regions_served: [reg_bengaluru, reg_hyderabad]
+    outlets_count: 10
+    onboard_week_offset: 161
+    contract_duration_weeks: 52
+    committed_kg_per_month: 1800.0
+    contract_price_inr_per_kg: 625.0
+    shortfall_penalty_inr_per_kg: 200.0
+    status_at_end: pipeline
+
+shocks:
+  - name: "National Fitness Influencer Virality Event"
+    start_week: 40
+    duration_weeks: 4
+    event_type: viral_wom
+    impact_factor: 2.20
+    description: "Celebrity biohacker and fitness coach endorsement triggers viral social media surge."
+  - name: "Viral Clean-Meat Food Documentary Shock"
+    start_week: 92
+    duration_weeks: 3
+    event_type: demand_surge
+    impact_factor: 1.80
+    description: "Viral streaming documentary causes unprecedented spike in alternative protein inquiry."

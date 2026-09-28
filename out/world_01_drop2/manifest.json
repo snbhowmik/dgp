@@ -1,0 +1,23 @@
+{
+  "world_id": "world_01_drop2",
+  "contract_version": "1.0.0",
+  "history_start": "2022-01-03",
+  "history_end": "2025-03-30",
+  "plan_end": "2025-06-29",
+  "generated_at": "2026-09-28T23:55:59.874146+00:00",
+  "files": {
+    "regions.csv": "9a2e6c5dbd17445d3eb76303a2c6ff8b219b2d5527f5857e7aa8db47800938d8",
+    "skus.csv": "6b96bee4bd72afd40452b8dc8e8860fe4ba643eb26310b571112d6f4d78a3a6f",
+    "product_matrix.csv": "f72b31dcf19790ddc4900cbaf5f741e02de22e3040935e1da6d08b1f9a9fc789",
+    "orders.csv": "96fe5d5e3005b7021f4b6ab46cd28b25f0bbd3153fbf23303262dddc1646d133",
+    "capacity_batches.csv": "48756d1834239d38fe46b35d1b712c117aaa46527795d3b9230230a50572d350",
+    "capacity_plan.csv": "fad686ccea28b30faf510a56df121314ea6ceef78d06c9a4d72c049975456b85",
+    "coman_contracts.csv": "a380205345f7b66f1d865cc18781d1237b339bc80bfbdd004fb07324a51be18e",
+    "coman_activity.csv": "fd57cec563670bfbd7e09560b5b5ffc75a0566d3976b038bc20a0759803dd669",
+    "b2b_accounts.csv": "af18928e5a1cd3a1044b5c6d9df970c3ee63a2bb1647d59052fb295a70e7768b",
+    "marketing_daily.csv": "ea419beeab90f262b921c94900a835078928d2b57e4417006f1f558f7b40886d",
+    "marketing_plan.csv": "a76153999efbe5805010eb12f5d28b214f98c2dc8478bafe96b61c4110ba8c59",
+    "customers.csv": "16153bc7e59c841d86bf454b7329abeb69a24bfcaf264db4c856ba4f15a62d68",
+    "nps_responses.csv": "0748e88f0daa611aecb7181c96ea718ef78c098ac7a3ac79f3392757ce0dcc1f"
+  }
+}

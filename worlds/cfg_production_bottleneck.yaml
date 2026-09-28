@@ -1,0 +1,295 @@
+world_name: cfg_production_bottleneck
+description: >
+  Chronic production uncertainty and severe supply bottleneck. Higher base bioreactor failure
+  and contamination rates (7% fail, 12% partial), punctuated by a severe monsoon media contamination
+  shock between Weeks 60 and 70. Forces emergency co-manufacturing activation at premium costs.
+  Demand frequently crashes against the hard output ceiling, creating widespread order waitlisting and stockouts.
+history_weeks: 156
+start_date: "2022-01-03"
+plan_weeks_ahead: 13
+
+demand_growth_rate_annual: 0.16
+seasonality_sensitivity: 0.95
+wom_strength: 0.04
+d2c_repeat_rate: 0.32
+d2c_subscriber_fraction: 0.10
+ops_capacity_buffer: 1.05
+coman_activation_threshold: 0.78
+marketing_responsiveness: 0.85
+nps_baseline: 7.9
+
+regions:
+  - region_id: reg_delhi_ncr
+    region_name: Delhi NCR
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.45
+  - region_id: reg_mumbai
+    region_name: Mumbai
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.50
+  - region_id: reg_bengaluru
+    region_name: Bengaluru
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.30
+  - region_id: reg_hyderabad
+    region_name: Hyderabad
+    tier: metro
+    cold_chain_available: true
+    market_weight: 1.05
+  - region_id: reg_chennai
+    region_name: Chennai
+    tier: metro
+    cold_chain_available: true
+    market_weight: 0.95
+  - region_id: reg_pune
+    region_name: Pune
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.85
+  - region_id: reg_kolkata
+    region_name: Kolkata
+    tier: tier1
+    cold_chain_available: true
+    market_weight: 0.80
+
+skus:
+  - sku_id: SKU-CHK-500G
+    product_line: cultivated_chicken
+    pack_size_kg: 0.50
+    status: production
+    expected_launch_date: "2022-01-03"
+    shelf_life_days: 18
+    unit_cost_inr_per_kg: 460.00
+    list_price_d2c_inr_per_kg: 920.00
+  - sku_id: SKU-CHK-1KG
+    product_line: cultivated_chicken
+    pack_size_kg: 1.00
+    status: production
+    expected_launch_date: "2022-01-03"
+    shelf_life_days: 18
+    unit_cost_inr_per_kg: 430.00
+    list_price_d2c_inr_per_kg: 820.00
+  - sku_id: SKU-MIC-250G
+    product_line: microbial
+    pack_size_kg: 0.25
+    status: rnd
+    expected_launch_date: null
+    shelf_life_days: 28
+    unit_cost_inr_per_kg: 370.00
+    list_price_d2c_inr_per_kg: 780.00
+
+product_matrix_rules:
+  - sku_id: SKU-CHK-500G
+    channel: D2C
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-CHK-1KG
+    channel: D2C
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+  - sku_id: SKU-CHK-1KG
+    channel: B2B
+    region_id: ALL
+    eligible_from: "2022-01-03"
+    eligible_to: null
+
+facilities:
+  - facility_id: FAC-BLR-01
+    product_line: cultivated_chicken
+    nominal_batches_per_week: 3
+    planned_yield_per_batch_kg: 420.00
+    cycle_days: 7
+    failure_rate: 0.07
+    partial_rate: 0.12
+    yield_std_pct: 0.10
+  - facility_id: FAC-PUN-01
+    product_line: cultivated_chicken
+    nominal_batches_per_week: 2
+    planned_yield_per_batch_kg: 340.00
+    cycle_days: 7
+    failure_rate: 0.08
+    partial_rate: 0.14
+    yield_std_pct: 0.11
+
+coman_contracts:
+  - coman_id: COMAN-BLR-01
+    product_line: cultivated_chicken
+    available_from: "2022-02-01"
+    lead_time_weeks: 3
+    min_commit_kg_per_week: 250.00
+    max_kg_per_week: 900.00
+    unit_cost_inr_per_kg: 560.00
+    min_active_weeks: 6
+    reliability: 0.94
+  - coman_id: COMAN-PUN-02
+    product_line: cultivated_chicken
+    available_from: "2022-08-01"
+    lead_time_weeks: 4
+    min_commit_kg_per_week: 300.00
+    max_kg_per_week: 1100.00
+    unit_cost_inr_per_kg: 575.00
+    min_active_weeks: 8
+    reliability: 0.92
+
+marketing_campaigns:
+  - channel: D2C
+    campaign_type: ppc
+    campaign_id: CMP-D2C-SEARCH-PRD
+    base_weekly_spend_inr: 42000.0
+    cost_per_click_inr: 29.0
+    click_to_visitor_rate: 0.86
+    bounce_rate: 0.35
+    lead_conversion_rate: 0.13
+    qualified_lead_rate: 0.68
+    sale_conversion_rate: 0.34
+    attribution_inflation: 1.25
+  - channel: D2C
+    campaign_type: social
+    campaign_id: CMP-D2C-SOC-PRD
+    base_weekly_spend_inr: 52000.0
+    cost_per_click_inr: 20.0
+    click_to_visitor_rate: 0.81
+    bounce_rate: 0.44
+    lead_conversion_rate: 0.09
+    qualified_lead_rate: 0.58
+    sale_conversion_rate: 0.26
+    attribution_inflation: 1.35
+  - channel: D2C
+    campaign_type: native
+    campaign_id: CMP-D2C-NAT-PRD
+    base_weekly_spend_inr: 22000.0
+    cost_per_click_inr: 24.0
+    click_to_visitor_rate: 0.84
+    bounce_rate: 0.39
+    lead_conversion_rate: 0.10
+    qualified_lead_rate: 0.62
+    sale_conversion_rate: 0.28
+    attribution_inflation: 1.20
+  - channel: D2C
+    campaign_type: email
+    campaign_id: CMP-D2C-EML-PRD
+    base_weekly_spend_inr: 8000.0
+    cost_per_click_inr: 6.5
+    click_to_visitor_rate: 0.93
+    bounce_rate: 0.22
+    lead_conversion_rate: 0.20
+    qualified_lead_rate: 0.82
+    sale_conversion_rate: 0.50
+    attribution_inflation: 1.10
+  - channel: B2B
+    campaign_type: trade
+    campaign_id: CMP-B2B-TRD-PRD
+    base_weekly_spend_inr: 38000.0
+    cost_per_click_inr: 88.0
+    click_to_visitor_rate: 0.89
+    bounce_rate: 0.26
+    lead_conversion_rate: 0.16
+    qualified_lead_rate: 0.78
+    sale_conversion_rate: 0.32
+    attribution_inflation: 1.15
+
+b2b_accounts:
+  - account_id: ACC-REST-301
+    account_type: restaurant
+    region_id: reg_delhi_ncr
+    regions_served: [reg_delhi_ncr]
+    outlets_count: 3
+    onboard_week_offset: 4
+    contract_duration_weeks: 152
+    committed_kg_per_month: 400.0
+    contract_price_inr_per_kg: 685.0
+    shortfall_penalty_inr_per_kg: 130.0
+    status_at_end: active
+  - account_id: ACC-REST-302
+    account_type: restaurant
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai]
+    outlets_count: 2
+    onboard_week_offset: 8
+    contract_duration_weeks: 148
+    committed_kg_per_month: 350.0
+    contract_price_inr_per_kg: 690.0
+    shortfall_penalty_inr_per_kg: 130.0
+    status_at_end: active
+  - account_id: ACC-HOTEL-301
+    account_type: hotel
+    region_id: reg_bengaluru
+    regions_served: [reg_bengaluru]
+    outlets_count: 1
+    onboard_week_offset: 12
+    contract_duration_weeks: 144
+    committed_kg_per_month: 550.0
+    contract_price_inr_per_kg: 670.0
+    shortfall_penalty_inr_per_kg: 160.0
+    status_at_end: active
+  - account_id: ACC-QSR-301
+    account_type: qsr_chain
+    region_id: reg_mumbai
+    regions_served: [reg_mumbai, reg_pune]
+    outlets_count: 7
+    onboard_week_offset: 18
+    contract_duration_weeks: 138
+    committed_kg_per_month: 1300.0
+    contract_price_inr_per_kg: 635.0
+    shortfall_penalty_inr_per_kg: 210.0
+    status_at_end: active
+  - account_id: ACC-DIST-301
+    account_type: distributor
+    region_id: reg_delhi_ncr
+    regions_served: [reg_delhi_ncr, reg_kolkata]
+    outlets_count: 12
+    onboard_week_offset: 25
+    contract_duration_weeks: 131
+    committed_kg_per_month: 1700.0
+    contract_price_inr_per_kg: 605.0
+    shortfall_penalty_inr_per_kg: 220.0
+    status_at_end: active
+  - account_id: ACC-CATR-301
+    account_type: caterer
+    region_id: reg_hyderabad
+    regions_served: [reg_hyderabad]
+    outlets_count: 1
+    onboard_week_offset: 32
+    contract_duration_weeks: 40
+    committed_kg_per_month: 450.0
+    contract_price_inr_per_kg: 680.0
+    shortfall_penalty_inr_per_kg: 120.0
+    status_at_end: churned
+    churn_week_offset: 72
+  - account_id: ACC-REST-303
+    account_type: restaurant
+    region_id: reg_chennai
+    regions_served: [reg_chennai]
+    outlets_count: 1
+    onboard_week_offset: 40
+    contract_duration_weeks: 116
+    committed_kg_per_month: 250.0
+    contract_price_inr_per_kg: 700.0
+    shortfall_penalty_inr_per_kg: 105.0
+    status_at_end: paused
+    pause_week_start: 65
+    pause_week_end: 85
+  - account_id: ACC-PIPE-301
+    account_type: qsr_chain
+    region_id: reg_hyderabad
+    regions_served: [reg_hyderabad]
+    outlets_count: 5
+    onboard_week_offset: 161
+    contract_duration_weeks: 52
+    committed_kg_per_month: 900.0
+    contract_price_inr_per_kg: 640.0
+    shortfall_penalty_inr_per_kg: 180.0
+    status_at_end: pipeline
+
+shocks:
+  - name: "Monsoon Bioreactor Contamination & Media Crisis"
+    start_week: 62
+    duration_weeks: 10
+    event_type: supply_disruption
+    impact_factor: 2.40
+    description: "Contamination in raw growth media causes elevated batch failures across in-house bioreactors."

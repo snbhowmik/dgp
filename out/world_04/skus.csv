@@ -1,0 +1,4 @@
+sku_id,product_line,pack_size_kg,status,expected_launch_date,shelf_life_days,unit_cost_inr_per_kg,list_price_d2c_inr_per_kg
+SKU-CHK-500G,cultivated_chicken,0.5,production,2022-01-03,18,460.00,920.00
+SKU-CHK-1KG,cultivated_chicken,1,production,2022-01-03,18,430.00,820.00
+SKU-MIC-250G,microbial,0.25,rnd,,28,370.00,780.00

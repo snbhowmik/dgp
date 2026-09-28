@@ -1,0 +1,8 @@
+region_id,region_name,tier,cold_chain_available
+reg_delhi_ncr,Delhi NCR,metro,true
+reg_mumbai,Mumbai,metro,true
+reg_bengaluru,Bengaluru,metro,true
+reg_hyderabad,Hyderabad,metro,true
+reg_chennai,Chennai,metro,true
+reg_pune,Pune,tier1,true
+reg_kolkata,Kolkata,tier1,true

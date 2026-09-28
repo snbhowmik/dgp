@@ -1,0 +1,55 @@
+world_id: world_03
+internal_config_name: cfg_volatile_macro
+seed: 42003
+description: 'High macroeconomic and seasonal volatility. Characterized by deep cultural
+  fasting dips during Navratri and Shravan, sharp winter wedding surges, high consumer
+  price sensitivity, and elevated D2C churn. The marketing team frequently oscillates
+  budgets in reactive closed-loop overcorrection.
+
+  '
+blind_assignment_note: High macroeconomic and seasonal volatility, strong fasting
+  dips, high price sensitivity and elevated churn
+core_mechanics:
+  demand_growth_rate_annual: 0.08
+  seasonality_sensitivity: 1.65
+  word_of_mouth_strength: 0.03
+  d2c_repeat_rate: 0.28
+  d2c_subscriber_fraction: 0.06
+  coman_activation_threshold: 0.9
+  marketing_responsiveness: 1.45
+  nps_baseline: 7.7
+notable_events_and_shocks:
+- event_name: Summer Heatwave & Cold Chain Cost Spike
+  event_type: supply_disruption
+  start_week: 68
+  duration_weeks: 4
+  impact_multiplier: 1.5
+  description: Peak summer temperatures create transit refrigeration failures and
+    spoilage.
+facilities:
+- facility_id: FAC-BLR-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 3
+  planned_yield_per_batch_kg: 420.0
+  base_failure_rate: 0.05
+  base_partial_rate: 0.09
+- facility_id: FAC-PUN-01
+  product_line: cultivated_chicken
+  nominal_batches_per_week: 2
+  planned_yield_per_batch_kg: 320.0
+  base_failure_rate: 0.06
+  base_partial_rate: 0.1
+coman_partners:
+- coman_id: COMAN-PUN-01
+  product_line: cultivated_chicken
+  available_from: '2022-04-01'
+  lead_time_weeks: 3
+  min_commit_kg_per_week: 200.0
+  max_kg_per_week: 700.0
+  unit_cost_inr_per_kg: 540.0
+b2b_accounts_summary:
+  total_accounts: 8
+  pipeline_count: 1
+  active_count: 5
+  churned_count: 1
+  paused_count: 1
