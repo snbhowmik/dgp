@@ -11,12 +11,12 @@ from dgp.sealed import generate_sealed_doc, write_and_hash_sealed
 
 
 WORLD_ASSIGNMENTS = [
-    ("world_01", "worlds/cfg_ordinary_growth.yaml", 42001, "Baseline ordinary trajectory with modest steady growth and standard festival dynamics"),
-    ("world_02", "worlds/cfg_high_marketing_viral.yaml", 42002, "High marketing sensitivity with crowdsourced virality spikes, high referral rate, and fast customer acquisition"),
-    ("world_03", "worlds/cfg_volatile_macro.yaml", 42003, "High macroeconomic and seasonal volatility, strong fasting dips, high price sensitivity and elevated churn"),
-    ("world_04", "worlds/cfg_production_bottleneck.yaml", 42004, "Severe bioreactor yield volatility, summer contamination shocks, and heavy co-man reliance under shortfall pressure"),
-    ("world_05", "worlds/cfg_structural_break.yaml", 42005, "Structural break midway: cold-chain regulatory opening into new regions and mycelium commercial pilot launch"),
-    ("world_06", "worlds/cfg_b2b_concentration.yaml", 42006, "High B2B account concentration with massive QSR chains, shortfall penalties, and severe channel allocation conflict"),
+    ("world_01", "worlds/cfg_world_01_high_volatility_risk.yaml", 42001, "High Volatility & High Risk: Extreme seasonal fasting swings (Navratri/Shravan), price elasticity, high churn, and reactive marketing shifts"),
+    ("world_02", "worlds/cfg_world_02_prime_standing.yaml", 42002, "Prime Standing & Operational Scale: Category leader with predictable yields, high subscriber retention, premium NPS, and disciplined execution"),
+    ("world_03", "worlds/cfg_world_03_viral_hypergrowth.yaml", 42003, "Viral Hypergrowth & Demand Surges: High digital ad responsiveness, crowdsourced influencer virality spikes, and capacity waitlisting"),
+    ("world_04", "worlds/cfg_world_04_production_bottleneck.yaml", 42004, "Production Bottlenecks & Operational Distress: Elevated batch failure rates, monsoon media contamination crisis, and expensive co-man scramble"),
+    ("world_05", "worlds/cfg_world_05_structural_break.yaml", 42005, "Structural Break & Strategic Transformation: Mid-horizon cold-chain route expansion into 6 new regions + commercial Mycelium launch"),
+    ("world_06", "worlds/cfg_world_06_b2b_concentration.yaml", 42006, "B2B Key Account Concentration & Channel Squeeze: Massive QSR dominance, heavy shortfall penalties, D2C starvation, and caterer contract churn"),
 ]
 
 

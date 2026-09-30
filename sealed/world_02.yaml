@@ -1,68 +1,53 @@
 world_id: world_02
-internal_config_name: cfg_high_marketing_viral
+internal_config_name: cfg_world_02_prime_standing
 seed: 42002
-description: 'High marketing responsiveness and explosive organic virality. Digital
-  campaigns yield low CPCs and high lead conversion. Powerful word-of-mouth referral
-  loops and two massive crowdsourced viral content surges at Week 40 and Week 92 cause
-  sudden demand spikes that strain inventory and cause temporary order waitlists.
-
-  '
-blind_assignment_note: High marketing sensitivity with crowdsourced virality spikes,
-  high referral rate, and fast customer acquisition
+description: "World 02 \u2014 Prime Standing & Operational Scale: Established category\
+  \ leader with best-in-class standing, predictable manufacturing, high customer loyalty,\
+  \ and disciplined closed-loop marketing. High repeat purchase retention (45%), healthy\
+  \ subscription adoption (20%), premium NPS (8.9 baseline), low bioreactor batch\
+  \ failures (2.5% failure rate), and reliable co-manufacturing reserves.\n"
+blind_assignment_note: 'Prime Standing & Operational Scale: Category leader with predictable
+  yields, high subscriber retention, premium NPS, and disciplined execution'
 core_mechanics:
-  demand_growth_rate_annual: 0.26
-  seasonality_sensitivity: 0.9
-  word_of_mouth_strength: 0.12
-  d2c_repeat_rate: 0.46
-  d2c_subscriber_fraction: 0.22
-  coman_activation_threshold: 0.82
-  marketing_responsiveness: 1.35
-  nps_baseline: 8.8
+  demand_growth_rate_annual: 0.16
+  seasonality_sensitivity: 0.8
+  word_of_mouth_strength: 0.05
+  d2c_repeat_rate: 0.45
+  d2c_subscriber_fraction: 0.2
+  coman_activation_threshold: 0.86
+  marketing_responsiveness: 0.95
+  nps_baseline: 8.9
 notable_events_and_shocks:
-- event_name: National Fitness Influencer Virality Event
-  event_type: viral_wom
-  start_week: 40
-  duration_weeks: 4
-  impact_multiplier: 2.2
-  description: Celebrity biohacker and fitness coach endorsement triggers viral social
-    media surge.
-- event_name: Viral Clean-Meat Food Documentary Shock
+- event_name: Diwali National Festive Dining Peak
   event_type: demand_surge
-  start_week: 92
+  start_week: 42
   duration_weeks: 3
-  impact_multiplier: 1.8
-  description: Viral streaming documentary causes unprecedented spike in alternative
-    protein inquiry.
-- event_name: 'Product Launch / Pilot: SKU-SEA-250G'
-  event_type: product_launch
-  launch_date: '2023-04-03'
-  product_line: seaweed
-  description: Introduction of seaweed (SKU-SEA-250G) into designated regional cold
-    chains.
+  impact_multiplier: 1.25
+  description: Annual national festive feast surge across metro markets.
 facilities:
 - facility_id: FAC-BLR-01
   product_line: cultivated_chicken
   nominal_batches_per_week: 4
-  planned_yield_per_batch_kg: 500.0
-  base_failure_rate: 0.03
-  base_partial_rate: 0.06
+  planned_yield_per_batch_kg: 480.0
+  base_failure_rate: 0.025
+  base_partial_rate: 0.05
 - facility_id: FAC-PUN-01
   product_line: cultivated_chicken
   nominal_batches_per_week: 3
-  planned_yield_per_batch_kg: 400.0
-  base_failure_rate: 0.04
-  base_partial_rate: 0.07
+  planned_yield_per_batch_kg: 380.0
+  base_failure_rate: 0.03
+  base_partial_rate: 0.06
 coman_partners:
-- coman_id: COMAN-HYD-01
+- coman_id: COMAN-PUN-01
   product_line: cultivated_chicken
-  available_from: '2022-03-01'
+  available_from: '2022-04-01'
   lead_time_weeks: 2
-  min_commit_kg_per_week: 300.0
-  max_kg_per_week: 1200.0
-  unit_cost_inr_per_kg: 510.0
+  min_commit_kg_per_week: 250.0
+  max_kg_per_week: 900.0
+  unit_cost_inr_per_kg: 505.0
 b2b_accounts_summary:
-  total_accounts: 11
+  total_accounts: 8
   pipeline_count: 1
-  active_count: 8
-  churned_count: 1
-  paused_count: 1
+  active_count: 7
+  churned_count: 0
+  paused_count: 0

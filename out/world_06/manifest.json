@@ -4,20 +4,20 @@
   "history_start": "2022-01-03",
   "history_end": "2024-12-29",
   "plan_end": "2025-03-30",
-  "generated_at": "2026-09-28T23:55:44.960581+00:00",
+  "generated_at": "2026-09-30T04:29:24.581167+00:00",
   "files": {
     "regions.csv": "8fb68174672bef9f9707d8cc09791586cd851d7ec5ebd92b805998fbbac52a5f",
     "skus.csv": "a22ad6c276a9850b482f69112b72bf15aa763c6be229c09e692281937fb785cc",
     "product_matrix.csv": "9a6406422862b445564b2c5e80752122e48ee7ed3183b2bbf6b1841dfe570694",
-    "orders.csv": "ef24bc44ca0fada22470e53a0afcd0dc59bd7027c2a5316de532ca5447502c8e",
-    "capacity_batches.csv": "bb5174c368b48af9487997f109e47e133372949bf39e9dc4135bd993d00b9dd0",
+    "orders.csv": "17bd7cb40caa014814c729b79e38d9fc40dad12219e6b7a3a31f33277b4345cf",
+    "capacity_batches.csv": "490eebc6aee43ead24e72a20bfc4d0d04c91a0aad33d28b9a9acb4450e8c3d81",
     "capacity_plan.csv": "fd2490ead6230e231b5a6b4fd530681375a523521c7f9d1c52dae45caa197c2e",
     "coman_contracts.csv": "92860b476840e9a15d6cf92b810c8d05d701d7a275b1afb6c4dd9461deb0081c",
     "coman_activity.csv": "fd57cec563670bfbd7e09560b5b5ffc75a0566d3976b038bc20a0759803dd669",
-    "b2b_accounts.csv": "a4e78bc5e0eccd6dffc38f7a9d1665e98df32744dc369704b285cf295bd9df43",
-    "marketing_daily.csv": "1481e5e8351c9a5e039870a38dd6a4111eeb4210a9d729bb4119768c872aadc5",
-    "marketing_plan.csv": "5dd80e97af1123318824df389638c5e99e6b4bb27946c7bc59db8e60a99731ca",
-    "customers.csv": "5ee5e1b582e6bd223001f9260ba1ff45532b5e2b8da19e2069dd361b9b0da26e",
-    "nps_responses.csv": "9c34435db8fbc6a19c9ef61d07bce86018e21891af20937ba1750a0c5541a005"
+    "b2b_accounts.csv": "566e7d5f800a666416815b6e0324fda42f71a8f75cdf7196e3237092e9d531f4",
+    "marketing_daily.csv": "3a2a998e241e0586ab11131196bc41686c88c0960a7932a87befd5339f29fefb",
+    "marketing_plan.csv": "3ef50b83869649d5d0db4e0a1a9151e701c7f601d4f6e94c6cf8f12d503e452d",
+    "customers.csv": "71a7f02bfe404622590bdb82206af7a0d9701ff1f53764b7a9210d63d5d658de",
+    "nps_responses.csv": "801acc7aa47e0d93ccafd101af89c0b1b290daccc764291a1630ffda7e677ae8"
   }
 }

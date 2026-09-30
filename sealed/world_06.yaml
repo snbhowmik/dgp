@@ -1,16 +1,16 @@
 world_id: world_06
-internal_config_name: cfg_b2b_concentration
+internal_config_name: cfg_world_06_b2b_concentration
 seed: 42006
-description: 'High B2B wholesale concentration and severe channel allocation conflict.
-  Over 65% of total volume is locked into major QSR chains and wholesale distributors
-  carrying heavy shortfall penalties. Whenever bioreactor batches fluctuate, in-house
-  inventory is prioritized to avoid B2B penalties, leaving D2C e-commerce heavily
-  censored (stockouts, partials, waitlists) and causing D2C churn. An unexpected mid-history
-  contract churn at Week 75 creates a sudden inventory surplus and perishable spoilage.
-
-  '
-blind_assignment_note: High B2B account concentration with massive QSR chains, shortfall
-  penalties, and severe channel allocation conflict
+description: "World 06 \u2014 B2B Key Account Concentration & Channel Squeeze: High\
+  \ commercial concentration where over 65% of total production volume is dedicated\
+  \ to a massive national QSR chain (38 outlets) and wholesale distributors carrying\
+  \ heavy shortfall penalties (INR 250/kg). Whenever bioreactor batches fluctuate,\
+  \ in-house inventory is prioritized to avoid B2B penalties, leaving D2C e-commerce\
+  \ heavily censored (stockouts, partials, waitlists) and causing D2C churn. An unexpected\
+  \ mid-history contract churn at Week 75 creates a sudden inventory surplus and perishable\
+  \ spoilage.\n"
+blind_assignment_note: 'B2B Key Account Concentration & Channel Squeeze: Massive QSR
+  dominance, heavy shortfall penalties, D2C starvation, and caterer contract churn'
 core_mechanics:
   demand_growth_rate_annual: 0.18
   seasonality_sensitivity: 0.8

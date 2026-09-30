@@ -1,14 +1,14 @@
 world_id: world_05
-internal_config_name: cfg_structural_break
+internal_config_name: cfg_world_05_structural_break
 seed: 42005
-description: 'Major structural break midway through history (Week 78). Six new Tier-1
-  and Tier-2 regional cold-chain routes open simultaneously with the commercial launch
-  of the Mycelium product line (SKU-MYC-500G). Demand and capacity scale dramatically
-  in the second half of history, shifting channel economics and regional mix.
-
-  '
-blind_assignment_note: 'Structural break midway: cold-chain regulatory opening into
-  new regions and mycelium commercial pilot launch'
+description: "World 05 \u2014 Structural Break & Strategic Transformation: Major structural\
+  \ break midway through history (Week 78). Six new Tier-1 and Tier-2 cold-chain distribution\
+  \ territories are unlocked simultaneously with the commercial scale-up of the Mycelium\
+  \ product line (SKU-MYC-500G) moving from pilot into regular production. The company's\
+  \ total addressable market, capacity ceiling, and product revenue mix permanently\
+  \ shift in the second half of history.\n"
+blind_assignment_note: 'Structural Break & Strategic Transformation: Mid-horizon cold-chain
+  route expansion into 6 new regions + commercial Mycelium launch'
 core_mechanics:
   demand_growth_rate_annual: 0.22
   seasonality_sensitivity: 0.9

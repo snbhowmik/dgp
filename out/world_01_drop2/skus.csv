@@ -1,4 +1,4 @@
 sku_id,product_line,pack_size_kg,status,expected_launch_date,shelf_life_days,unit_cost_inr_per_kg,list_price_d2c_inr_per_kg
-SKU-CHK-500G,cultivated_chicken,0.5,production,2022-01-03,21,420.00,899.00
-SKU-CHK-1KG,cultivated_chicken,1,production,2022-01-03,21,390.00,799.00
-SKU-MYC-500G,mycelium,0.5,rnd,,28,340.00,699.00
+SKU-CHK-500G,cultivated_chicken,0.5,production,2022-01-03,18,445.00,920.00
+SKU-CHK-1KG,cultivated_chicken,1,production,2022-01-03,18,415.00,830.00
+SKU-MIC-500G,microbial,0.5,rnd,,30,360.00,750.00

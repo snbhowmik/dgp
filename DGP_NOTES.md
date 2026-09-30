@@ -45,37 +45,32 @@ Rather than sampling independent random variables directly for table columns, th
 
 ---
 
-### [2026-09-29 05:25 UTC+05:30] World Configuration Rationale & Blind Assignments
+### [2026-09-30 05:35 UTC+05:30] Named World Archetypes & Explicit Strategic Focus
 
-The six worlds have been mapped blindly via random permutation (`seed=20260929`). The mapping is recorded privately here and in `sealed/`.
+The six worlds have been mapped into explicit, distinct business archetypes with tailored underlying dynamics:
 
-#### Blind Mapping Table
+#### Archetype & Blind Mapping Table
 
-| Public ID | Internal Config | Random Seed | Description / Underlying Dynamics | Sealed SHA-256 Hash |
-| :--- | :--- | :--- | :--- | :--- |
-| `world_01` | `cfg_ordinary_growth.yaml` | 42001 | Baseline ordinary growth (14% annual), balanced D2C/B2B, standard Indian festival cycles, low batch failures. | `ee5fac8bdf0c907632070657ac728d349855de5bc4cb153521aeda9bc644550d` |
-| `world_02` | `cfg_high_marketing_viral.yaml` | 42002 | Explosive organic virality and digital responsiveness. Surges at Week 40 & Week 92 trigger severe demand spikes and temporary order waitlists. | `d82d7579ee35270788c292daec8d8a8da5367e6c2ac493459b2bc13c6116f7a0` |
-| `world_03` | `cfg_volatile_macro.yaml` | 42003 | High macroeconomic and seasonal volatility. Deep fasting drops during Navratri/Shravan, sharp winter wedding peaks, high D2C churn. | `be2e885d769718e305fce4ffcf13513b7e63b1b2366a092c64e8cb3092a663a1` |
-| `world_04` | `cfg_production_bottleneck.yaml` | 42004 | Severe bioreactor yield volatility. Extended monsoon media contamination crisis (Weeks 62-72) forces emergency co-man activation at high cost. | `df7edcac553e37d187db6c56077b17d8f81c8641c261f5f5caecf86372dda521` |
-| `world_05` | `cfg_structural_break.yaml` | 42005 | Structural break at Week 78: 6 new Tier-1/Tier-2 cold chains opened + Mycelium (SKU-MYC-500G) commercial launch from R&D/pilot to production. | `054a36db33c32202d6150d53c4413235c4f3cb94a9673732d79602734f7427b8` |
-| `world_06` | `cfg_b2b_concentration.yaml` | 42006 | Extreme B2B wholesale concentration (>65% volume in large QSR chains). Severe shortfall penalties force D2C rationing and cause D2C customer churn. | `b467711b89e5b5438d10d9a4d8ebaeda83caeb5dd20e34ecb00d12161996b372` |
+| Public ID | Archetype / Thematic Focus | Internal Config File | Seed | Key Strategic Focus / Phenomenon | Sealed YAML SHA-256 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **`world_01`** | **High Volatility & High Risk** | `cfg_world_01_high_volatility_risk.yaml` | 42001 | Extreme macroeconomic and seasonal volatility. Navratri/Shravan fasting dips (-40%), high consumer price sensitivity, low repeat retention (26%), high churn, reactive marketing budget whipsaws, and heatwave cold-chain crisis. | `2e05da46025787e21b7b10a75b2a93306c4ff869b5ed59647d0906a98e301e15` |
+| **`world_02`** | **Prime Standing & Operational Scale** | `cfg_world_02_prime_standing.yaml` | 42002 | Market leader with high customer retention (45% repeat, 20% subscribers), premium brand equity (NPS 8.9 baseline), predictable yields (2.5% failure), disciplined marketing, and reliable co-manufacturing reserves. | `5023559da92bae5017c5f9c719aa9f41ef66c112839e617d52f05db6aa9b9188` |
+| **`world_03`** | **Viral Hypergrowth & Demand Surges** | `cfg_world_03_viral_hypergrowth.yaml` | 42003 | Aggressive digital ad efficiency (high CAC yield) and explosive crowdsourced word-of-mouth. Viral spikes at Week 40 & Week 92 cause sudden 2x+ demand surges that overwhelm bioreactor ceilings and trigger order waitlists. | `16825e8f1ddd52c7b2005d42a9f7946c4e6d2e9ff755cee73bc5fff883e69da1` |
+| **`world_04`** | **Production Bottlenecks & Operational Distress** | `cfg_world_04_production_bottleneck.yaml` | 42004 | Chronic manufacturing fragility with high base batch failure rates (7% fail, 12% partial). Protracted monsoon media contamination crisis (Weeks 62-72) forces emergency reliance on expensive co-manufacturers, causing widespread order stockouts. | `2eb88e671c42a766b71634e7ca742729a0e14186ccc240dbf8ac7ad2a5d9990c` |
+| **`world_05`** | **Structural Break & Strategic Transformation** | `cfg_world_05_structural_break.yaml` | 42005 | Significant structural break midway through history (Week 78). Six new Tier-1/Tier-2 cold-chain regional routes open simultaneously with the commercial launch of the Mycelium product line (`SKU-MYC-500G`) moving from pilot to production. | `ca38efaf23c8aaf44cf08f57727fae66d21522804a1ed0e580c0e6b4ac6dfced` |
+| **`world_06`** | **B2B Key Account Concentration & Channel Squeeze** | `cfg_world_06_b2b_concentration.yaml` | 42006 | Extreme B2B wholesale concentration (>65% volume in a dominant 38-outlet QSR chain). Severe shortfall penalties (INR 250/kg) force ops to prioritize B2B and starve D2C e-commerce when output tightens. Major caterer churn at Week 75 creates inventory overhang and spoilage. | `71e2eaa1c60acc3deb0c179abdf9707c9e2e95ebe09cb68b76dd480881d50f83` |
 
-#### Sequential Extension Drop
-- `world_01_drop2`: Continuous continuation of `world_01` for an additional 13 weeks (total history 169 weeks: `2022-01-03` to `2025-03-30`), with forward plans extending through `2025-06-29`. Maintains exact seed lineage and contract consistency.
+#### Sequential Extension Drops
+- **`world_01_drop2`**: Extends World 01 (High Volatility & High Risk) by 13 additional weeks (history: `2022-01-03` to `2025-03-30`, plan through `2025-06-29`).
+- **`world_02_drop2`**: Extends World 02 (Prime Standing & Operational Scale) by 13 additional weeks (history: `2022-01-03` to `2025-03-30`, plan through `2025-06-29`).
 
 ---
 
-### [2026-09-29 05:26 UTC+05:30] Validation & Handoff Checklist Verification
+### [2026-09-30 05:40 UTC+05:30] Full Validation Verification
 
-- [x] **Schema & Headers**: All 13 CSV tables strictly match the column names, ordering, and data types of Contract v1.0.0.
-- [x] **FK Constraints**: All foreign keys between regions, SKUs, product matrix, customers, B2B accounts, orders, and co-man contracts verified.
-- [x] **Funnel Invariants**: Verified for all records in `marketing_daily.csv`:
-  - `bounces <= unique_visitors`
-  - `leads <= unique_visitors - bounces`
-  - `qualified_leads <= leads`
-  - `conversions <= leads`
-- [x] **Order Fulfillment Invariants**: Verified `requested_qty_kg >= fulfilled_qty_kg >= 0.0`. Statuses match fulfilled amounts. Delivered date set iff fulfilled > 0.
-- [x] **Physical Capacity Conservation**: Total fulfilled kg over history strictly bounded by total realized output (in-house actual batch yield + co-man delivered).
-- [x] **Zero Ground-Truth Leakage**: Grep scan across all files in all drops confirms zero occurrence of forbidden terms (`true_`, `regime`, `viral`, `elasticity`, `shock`, `unobserved`, `ground_truth`).
-- [x] **Deterministic Sealing**: SHA-256 hashes generated via `dgp seal` committed to this document prior to handoff.
-- [x] **Sequential Drop Verification**: `world_01_drop2` verified against `world_01` — static reference tables (`regions.csv`, `skus.csv`, `product_matrix.csv`, `coman_contracts.csv`) produce identical SHA-256 hashes across both drops.
+- [x] **Contract Validation**: All drops (`out/world_01` through `out/world_06`, plus `world_01_drop2` and `world_02_drop2`) passed `dgp validate` with zero errors.
+- [x] **Funnel Invariants**: Verified for all records (`bounces <= unique_visitors`, `leads <= unique_visitors - bounces`, `qualified_leads <= leads`, `conversions <= leads`).
+- [x] **Order Constraints**: Strictly satisfied `requested_qty_kg >= fulfilled_qty_kg >= 0.0`.
+- [x] **Physical Capacity Conservation**: Total fulfilled kg bounded by actual realized production.
+- [x] **Zero Ground-Truth Leakage**: Clean text scan across all drops confirms zero occurrence of unblinded or forbidden terms (`true_`, `regime`, `viral`, `elasticity`, `shock`, `unobserved`, `ground_truth`).
+- [x] **Deterministic Lineage**: Tested with pytest — identical seed produces byte-identical CSV tables.

@@ -1,15 +1,15 @@
 world_id: world_04
-internal_config_name: cfg_production_bottleneck
+internal_config_name: cfg_world_04_production_bottleneck
 seed: 42004
-description: 'Chronic production uncertainty and severe supply bottleneck. Higher
-  base bioreactor failure and contamination rates (7% fail, 12% partial), punctuated
-  by a severe monsoon media contamination shock between Weeks 60 and 70. Forces emergency
-  co-manufacturing activation at premium costs. Demand frequently crashes against
-  the hard output ceiling, creating widespread order waitlisting and stockouts.
-
-  '
-blind_assignment_note: Severe bioreactor yield volatility, summer contamination shocks,
-  and heavy co-man reliance under shortfall pressure
+description: "World 04 \u2014 Production Bottlenecks & Operational Distress: Chronic\
+  \ manufacturing fragility and severe supply-side bottlenecks. In-house bioreactors\
+  \ experience high base failure and partial rates (7% fail, 12% partial), exacerbated\
+  \ by a protracted monsoon contamination crisis between Weeks 62 and 72. Forces the\
+  \ business into urgent reliance on high-cost co-manufacturing. Total demand repeatedly\
+  \ crashes against capacity ceilings, causing severe customer order waitlisting and\
+  \ stockouts.\n"
+blind_assignment_note: 'Production Bottlenecks & Operational Distress: Elevated batch
+  failure rates, monsoon media contamination crisis, and expensive co-man scramble'
 core_mechanics:
   demand_growth_rate_annual: 0.16
   seasonality_sensitivity: 0.95
@@ -56,8 +56,8 @@ coman_partners:
   max_kg_per_week: 1100.0
   unit_cost_inr_per_kg: 575.0
 b2b_accounts_summary:
-  total_accounts: 8
+  total_accounts: 7
   pipeline_count: 1
   active_count: 5
   churned_count: 1
-  paused_count: 1
+  paused_count: 0

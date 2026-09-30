@@ -35,8 +35,8 @@ class MarketingEngine:
         region_weights: Dict[str, float],
     ) -> List[MarketingPlanRow]:
         """Generate weekly marketing plan across regions and campaign types for history + forward horizon."""
+        total_weight = sum(region_weights.values()) or 1.0
         plan_rows: List[MarketingPlanRow] = []
-
         for monday in all_mondays:
             # Indian festive bump (e.g., Q4 Oct-Dec)
             month = monday.month
@@ -45,7 +45,8 @@ class MarketingEngine:
             for camp in self.campaigns:
                 for r_id in self.region_ids:
                     w = region_weights.get(r_id, 1.0)
-                    planned = camp.base_weekly_spend_inr * w * seasonal_spend_boost
+                    regional_share = w / total_weight
+                    planned = camp.base_weekly_spend_inr * regional_share * seasonal_spend_boost
                     plan_rows.append(
                         MarketingPlanRow(
                             week_start=monday.isoformat(),
@@ -61,7 +62,7 @@ class MarketingEngine:
         self,
         current_date: date,
         daily_planned_spend: Dict[Tuple[str, str, str], float],
-        stockout_penalty_by_region: Dict[str, float],
+        tactical_multipliers: Dict[Tuple[str, str, str], float],
         growth_multiplier: float = 1.0,
         avg_order_value: float = 850.0,
     ) -> DailyMarketingOutput:
@@ -86,69 +87,53 @@ class MarketingEngine:
                 else:
                     dow_mult = 0.50 if is_weekend else 1.20
 
-                # Marketing team closed loop response: throttle spend in regions experiencing persistent stockouts
-                stockout_suppression = max(0.40, 1.0 - 0.5 * stockout_penalty_by_region.get(r_id, 0.0))
+                # Tactical multiplier from simulated marketing director (bounded 0.75 - 1.25)
+                tactical_mult = tactical_multipliers.get(key, 1.0)
                 
-                # Actual spend fluctuates slightly around daily plan (+/- 5%)
-                spend_jitter = self.rng.uniform(0.95, 1.05)
-                spend_inr = round(base_daily * dow_mult * stockout_suppression * spend_jitter, 2)
+                # Actual spend fluctuates realistically around plan (+/- 4%)
+                spend_jitter = self.rng.uniform(0.96, 1.04)
+                spend_inr = round(base_daily * dow_mult * tactical_mult * spend_jitter, 2)
 
-                if spend_inr < 5.0:
-                    # Mild real-world messiness: zero spend day
-                    spend_inr = 0.0
-                    impressions = 0
-                    clicks = 0
-                    unique_visitors = 0
-                    bounces = 0
-                    leads = 0
-                    qualified_leads = 0
-                    conversions = 0
-                    attributed_revenue_inr = 0.0
-                else:
-                    # Impressions derived from CPM
-                    cpm = self.rng.uniform(180.0, 320.0) if camp.campaign_type == "social" else self.rng.uniform(250.0, 450.0)
-                    impressions = max(1, int((spend_inr / cpm) * 1000))
+                # Impressions derived from CPM
+                cpm = self.rng.uniform(180.0, 320.0) if camp.campaign_type == "social" else self.rng.uniform(250.0, 450.0)
+                impressions = max(10, int((spend_inr / cpm) * 1000))
 
-                    # Clicks derived from CPC or CTR
-                    cpc = max(5.0, camp.cost_per_click_inr * self.rng.uniform(0.9, 1.15))
-                    clicks = max(1, int(spend_inr / cpc))
+                # Clicks derived from CPC
+                cpc = max(5.0, camp.cost_per_click_inr * self.rng.uniform(0.92, 1.12))
+                clicks = max(1, int(spend_inr / cpc))
+                clicks = min(clicks, impressions)
+                # Unique visitors (click to visitor conversion, factoring bot traffic / drop-off)
+                visitor_rate = min(0.95, max(0.60, camp.click_to_visitor_rate * self.rng.uniform(0.95, 1.05)))
+                unique_visitors = max(1, int(clicks * visitor_rate))
+                unique_visitors = min(unique_visitors, clicks)
 
-                    # Ensure clicks <= impressions
-                    clicks = min(clicks, impressions)
+                # Bounces (strictly <= unique_visitors)
+                bounce_rate = min(0.85, max(0.15, camp.bounce_rate * self.rng.uniform(0.90, 1.10)))
+                bounces = int(unique_visitors * bounce_rate)
+                bounces = min(bounces, unique_visitors)
 
-                    # Unique visitors (click to visitor conversion, factoring bot traffic / drop-off)
-                    visitor_rate = min(0.95, max(0.60, camp.click_to_visitor_rate * self.rng.uniform(0.95, 1.05)))
-                    unique_visitors = max(1, int(clicks * visitor_rate))
-                    unique_visitors = min(unique_visitors, clicks)
+                # Engaged visitors available for leads
+                engaged_visitors = unique_visitors - bounces
 
-                    # Bounces (strictly <= unique_visitors)
-                    bounce_rate = min(0.85, max(0.15, camp.bounce_rate * self.rng.uniform(0.90, 1.10)))
-                    bounces = int(unique_visitors * bounce_rate)
-                    bounces = min(bounces, unique_visitors)
+                # Leads (strictly <= engaged_visitors = unique_visitors - bounces)
+                lead_rate = min(0.60, camp.lead_conversion_rate * growth_multiplier * self.rng.uniform(0.85, 1.15))
+                leads = int(engaged_visitors * lead_rate)
+                leads = min(leads, engaged_visitors)
 
-                    # Engaged visitors available for leads
-                    engaged_visitors = unique_visitors - bounces
+                # Qualified leads (strictly <= leads)
+                ql_rate = min(0.95, camp.qualified_lead_rate * self.rng.uniform(0.90, 1.10))
+                qualified_leads = int(leads * ql_rate)
+                qualified_leads = min(qualified_leads, leads)
 
-                    # Leads (strictly <= engaged_visitors = unique_visitors - bounces)
-                    lead_rate = min(0.60, camp.lead_conversion_rate * growth_multiplier * self.rng.uniform(0.85, 1.15))
-                    leads = int(engaged_visitors * lead_rate)
-                    leads = min(leads, engaged_visitors)
+                # Conversions (strictly <= leads, typically a subset of qualified leads)
+                conv_rate = min(0.80, camp.sale_conversion_rate * self.rng.uniform(0.85, 1.15))
+                conversions = int(qualified_leads * conv_rate)
+                conversions = min(conversions, qualified_leads)
 
-                    # Qualified leads (strictly <= leads)
-                    ql_rate = min(0.95, camp.qualified_lead_rate * self.rng.uniform(0.90, 1.10))
-                    qualified_leads = int(leads * ql_rate)
-                    qualified_leads = min(qualified_leads, leads)
-
-                    # Conversions (strictly <= leads, typically a subset of qualified leads)
-                    conv_rate = min(0.80, camp.sale_conversion_rate * self.rng.uniform(0.85, 1.15))
-                    conversions = int(qualified_leads * conv_rate)
-                    conversions = min(conversions, qualified_leads)
-
-                    # Attributed revenue (platform reported, with standard attribution model window & overlap)
-                    # Platform claims credit for conversions * average order value * inflation factor
-                    attributed_revenue_inr = round(
-                        conversions * avg_order_value * camp.attribution_inflation * self.rng.uniform(0.90, 1.15), 2
-                    )
+                # Attributed revenue (platform reported, with standard attribution model window & overlap)
+                attributed_revenue_inr = round(
+                    conversions * avg_order_value * camp.attribution_inflation * self.rng.uniform(0.90, 1.15), 2
+                )
 
                 csv_rows.append(
                     MarketingDailyRow(

@@ -1,9 +1,10 @@
-world_name: cfg_production_bottleneck
+world_name: cfg_world_04_production_bottleneck
 description: >
-  Chronic production uncertainty and severe supply bottleneck. Higher base bioreactor failure
-  and contamination rates (7% fail, 12% partial), punctuated by a severe monsoon media contamination
-  shock between Weeks 60 and 70. Forces emergency co-manufacturing activation at premium costs.
-  Demand frequently crashes against the hard output ceiling, creating widespread order waitlisting and stockouts.
+  World 04 — Production Bottlenecks & Operational Distress:
+  Chronic manufacturing fragility and severe supply-side bottlenecks. In-house bioreactors experience high
+  base failure and partial rates (7% fail, 12% partial), exacerbated by a protracted monsoon contamination
+  crisis between Weeks 62 and 72. Forces the business into urgent reliance on high-cost co-manufacturing.
+  Total demand repeatedly crashes against capacity ceilings, causing severe customer order waitlisting and stockouts.
 history_weeks: 156
 start_date: "2022-01-03"
 plan_weeks_ahead: 13
@@ -261,19 +262,6 @@ b2b_accounts:
     shortfall_penalty_inr_per_kg: 120.0
     status_at_end: churned
     churn_week_offset: 72
-  - account_id: ACC-REST-303
-    account_type: restaurant
-    region_id: reg_chennai
-    regions_served: [reg_chennai]
-    outlets_count: 1
-    onboard_week_offset: 40
-    contract_duration_weeks: 116
-    committed_kg_per_month: 250.0
-    contract_price_inr_per_kg: 700.0
-    shortfall_penalty_inr_per_kg: 105.0
-    status_at_end: paused
-    pause_week_start: 65
-    pause_week_end: 85
   - account_id: ACC-PIPE-301
     account_type: qsr_chain
     region_id: reg_hyderabad

@@ -4,20 +4,20 @@
   "history_start": "2022-01-03",
   "history_end": "2024-12-29",
   "plan_end": "2025-03-30",
-  "generated_at": "2026-09-28T23:53:44.904298+00:00",
+  "generated_at": "2026-09-30T04:27:16.830827+00:00",
   "files": {
-    "regions.csv": "9a2e6c5dbd17445d3eb76303a2c6ff8b219b2d5527f5857e7aa8db47800938d8",
-    "skus.csv": "6b96bee4bd72afd40452b8dc8e8860fe4ba643eb26310b571112d6f4d78a3a6f",
-    "product_matrix.csv": "f72b31dcf19790ddc4900cbaf5f741e02de22e3040935e1da6d08b1f9a9fc789",
-    "orders.csv": "f21227894da3cdeaea06de514d30494723797710a9870a0267d8999db5b39fde",
-    "capacity_batches.csv": "97a4932fc9073dffe7a9dbba6c05568d7422cd8731c9280f867c895603305b5c",
-    "capacity_plan.csv": "ef7c68f5b7bfe162fc1cd947e292c9f0fff6d5939c90a35dd8435936c1361630",
-    "coman_contracts.csv": "a380205345f7b66f1d865cc18781d1237b339bc80bfbdd004fb07324a51be18e",
+    "regions.csv": "0177e00d32085f8a39a7261dfd6cab4003ed1dcfaf3312352875ea86c1419832",
+    "skus.csv": "fcb792f3239c3689911092d6171eb3bf8d3b87a2d7920be79e51953f34c15bcd",
+    "product_matrix.csv": "2e887430b390d4110e237869aa80dbc5b86b82c078ef8d11c3fab22ed8f3780b",
+    "orders.csv": "a98552c6cd748a257482b48fa7e7659729a7ebff631e87c181f58f9f721fb8bc",
+    "capacity_batches.csv": "f133a8cbf920e22a4040226c9d9df707d25a37880461979a8ee386179390fc6b",
+    "capacity_plan.csv": "826947c14a157f5e5dcc22343c6325ce167ad43e051d9c4f8b10cb41b8d6ab5c",
+    "coman_contracts.csv": "f4b7b28f4442fddf72cf602410d6d39e62ff81d1675277d7ef21088a9f3b2103",
     "coman_activity.csv": "fd57cec563670bfbd7e09560b5b5ffc75a0566d3976b038bc20a0759803dd669",
-    "b2b_accounts.csv": "500729e01188d6d85723c42d851523083478fe758cf0a469ee1999c74cc2835b",
-    "marketing_daily.csv": "bffe9fcfef584064b5525b5e1fc3c3a5e2886e1e5cb9e285a8d0f5e1e733b206",
-    "marketing_plan.csv": "7e3727c90081e5a5cf43020884978c01c5783023279ef95372ef8d7656e4e194",
-    "customers.csv": "e7b5eb0d1c583afb4e2c7e9e766f125cf87b58c201dbda21e916b3804a5b6aaf",
-    "nps_responses.csv": "837c12b6cd1345d51a9ccaf0d10b4ee2fd7a878a008ee192f88fd8813d00920f"
+    "b2b_accounts.csv": "d792e0bff49b444ae26286b96da378aec386d387e88487c5f26324925c45a5c2",
+    "marketing_daily.csv": "45205d4b666cf8902d8883630bed2044fefa0e6986f73206b04a29991cbf78ae",
+    "marketing_plan.csv": "ba44560f3c18488056c93cca227860fa3ecf0d8a496cb9e02a439ff42067ce1b",
+    "customers.csv": "a76fc05d4664278f280038c739fbf9281af41db08fff010240361b7270da6f35",
+    "nps_responses.csv": "d037d546d5918ef398ee5afd27c3a0caf2ab7fbd855c537d993b1fe78899a848"
   }
 }

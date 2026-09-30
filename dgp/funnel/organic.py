@@ -31,8 +31,8 @@ class OrganicDemandEngine:
 
         for region_id, count in active_customer_count_by_region.items():
             # Expected organic acquisition is proportional to active satisfied customer base
-            # e.g., 1 out of 500 active customers refers a friend every month (0.00007 per day)
-            lambda_daily = max(0.05, count * 0.00015 * self.wom_strength * viral_boost_multiplier)
+            # Capped at 8.0/day/region to prevent unconstrained exponential divergence in hypergrowth worlds
+            lambda_daily = min(8.0, max(0.02, count * 0.00010 * self.wom_strength * viral_boost_multiplier))
             
             # Draw Poisson / Binomial approximation
             num_acquisitions = 0

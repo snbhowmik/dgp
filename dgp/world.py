@@ -209,6 +209,13 @@ class WorldSimulator:
         capacity_plan_rows = bioreactor_sim.generate_capacity_plan(all_mondays_full)
         marketing_plan_rows = marketing_engine.generate_marketing_plan(all_mondays_full, region_weights)
 
+        planned_spend_map: Dict[Tuple[str, str, str, str], float] = {
+            (mp.week_start, mp.region_id, mp.channel, mp.campaign_type): mp.planned_spend_inr
+            for mp in marketing_plan_rows
+        }
+        weekly_spend_acc: Dict[Tuple[str, str, str], float] = {}
+        weekly_conv_acc: Dict[Tuple[str, str, str], int] = {}
+
         # Run day-by-day simulation through history
         curr_d = start_d
         week_idx = 0
@@ -260,6 +267,16 @@ class WorldSimulator:
                         )
 
                 # 4. Marketing closed-loop review
+                if weekly_spend_acc:
+                    recent_cpa = {
+                        k: (sp / max(1, weekly_conv_acc.get(k, 0)))
+                        for k, sp in weekly_spend_acc.items()
+                    }
+                    weekly_spend_acc = {}
+                    weekly_conv_acc = {}
+                else:
+                    recent_cpa = {}
+
                 stockout_rates = {
                     r: (stockouts_by_region[r] / max(1, orders_by_region[r])) for r in region_ids
                 }
@@ -290,15 +307,27 @@ class WorldSimulator:
             growth = (1.0 + self.config.demand_growth_rate_annual * ((curr_d - start_d).days / 365.25))
 
             # 1. Marketing Funnel Simulation
-            daily_targets = marketing_team.get_daily_spend_targets()
-            stockout_pens = {r: (stockouts_by_region[r] / max(1, orders_by_region[r])) for r in region_ids}
+            curr_monday_iso = get_monday_of_week(curr_d).isoformat()
+            daily_planned = {
+                (r, camp.channel, camp.campaign_type): (
+                    planned_spend_map.get((curr_monday_iso, r, camp.channel, camp.campaign_type), camp.base_weekly_spend_inr) / 7.0
+                )
+                for camp in self.config.marketing_campaigns
+                for r in region_ids
+            }
+
             mktg_out = marketing_engine.simulate_daily(
                 current_date=curr_d,
-                daily_planned_spend=daily_targets,
-                stockout_penalty_by_region=stockout_pens,
+                daily_planned_spend=daily_planned,
+                tactical_multipliers=marketing_team.tactical_multipliers,
                 growth_multiplier=growth * seasonality * demand_surge_mult,
             )
             marketing_daily_rows.extend(mktg_out.csv_rows)
+
+            for mrow in mktg_out.csv_rows:
+                k = (mrow.region_id, mrow.channel, mrow.campaign_type)
+                weekly_spend_acc[k] = weekly_spend_acc.get(k, 0.0) + mrow.spend_inr
+                weekly_conv_acc[k] = weekly_conv_acc.get(k, 0) + mrow.conversions
 
             # Active eligible SKUs for D2C today by region
             curr_iso = curr_d.isoformat()

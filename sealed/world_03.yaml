@@ -1,55 +1,67 @@
 world_id: world_03
-internal_config_name: cfg_volatile_macro
+internal_config_name: cfg_world_03_viral_hypergrowth
 seed: 42003
-description: 'High macroeconomic and seasonal volatility. Characterized by deep cultural
-  fasting dips during Navratri and Shravan, sharp winter wedding surges, high consumer
-  price sensitivity, and elevated D2C churn. The marketing team frequently oscillates
-  budgets in reactive closed-loop overcorrection.
-
-  '
-blind_assignment_note: High macroeconomic and seasonal volatility, strong fasting
-  dips, high price sensitivity and elevated churn
+description: "World 03 \u2014 Viral Hypergrowth & Demand Surges: Explosive digital\
+  \ marketing performance, powerful crowdsourced word-of-mouth referral dynamics,\
+  \ and fast customer acquisition. Features two massive crowdsourced viral content\
+  \ spikes at Week 40 and Week 92, causing severe sudden demand spikes that crash\
+  \ against bioreactor capacity limits and force customer waitlisting.\n"
+blind_assignment_note: 'Viral Hypergrowth & Demand Surges: High digital ad responsiveness,
+  crowdsourced influencer virality spikes, and capacity waitlisting'
 core_mechanics:
-  demand_growth_rate_annual: 0.08
-  seasonality_sensitivity: 1.65
-  word_of_mouth_strength: 0.03
-  d2c_repeat_rate: 0.28
-  d2c_subscriber_fraction: 0.06
-  coman_activation_threshold: 0.9
-  marketing_responsiveness: 1.45
-  nps_baseline: 7.7
+  demand_growth_rate_annual: 0.28
+  seasonality_sensitivity: 0.9
+  word_of_mouth_strength: 0.12
+  d2c_repeat_rate: 0.46
+  d2c_subscriber_fraction: 0.22
+  coman_activation_threshold: 0.82
+  marketing_responsiveness: 1.35
+  nps_baseline: 8.8
 notable_events_and_shocks:
-- event_name: Summer Heatwave & Cold Chain Cost Spike
-  event_type: supply_disruption
-  start_week: 68
+- event_name: National Fitness Influencer Virality Event
+  event_type: viral_wom
+  start_week: 40
   duration_weeks: 4
-  impact_multiplier: 1.5
-  description: Peak summer temperatures create transit refrigeration failures and
-    spoilage.
+  impact_multiplier: 2.2
+  description: Celebrity biohacker and fitness coach endorsement triggers viral social
+    media surge.
+- event_name: Viral Clean-Meat Food Documentary Shock
+  event_type: demand_surge
+  start_week: 92
+  duration_weeks: 3
+  impact_multiplier: 1.8
+  description: Viral streaming documentary causes unprecedented spike in alternative
+    protein inquiry.
+- event_name: 'Product Launch / Pilot: SKU-SEA-250G'
+  event_type: product_launch
+  launch_date: '2023-04-03'
+  product_line: seaweed
+  description: Introduction of seaweed (SKU-SEA-250G) into designated regional cold
+    chains.
 facilities:
 - facility_id: FAC-BLR-01
   product_line: cultivated_chicken
-  nominal_batches_per_week: 3
-  planned_yield_per_batch_kg: 420.0
-  base_failure_rate: 0.05
-  base_partial_rate: 0.09
+  nominal_batches_per_week: 4
+  planned_yield_per_batch_kg: 500.0
+  base_failure_rate: 0.03
+  base_partial_rate: 0.06
 - facility_id: FAC-PUN-01
   product_line: cultivated_chicken
-  nominal_batches_per_week: 2
-  planned_yield_per_batch_kg: 320.0
-  base_failure_rate: 0.06
-  base_partial_rate: 0.1
+  nominal_batches_per_week: 3
+  planned_yield_per_batch_kg: 400.0
+  base_failure_rate: 0.04
+  base_partial_rate: 0.07
 coman_partners:
-- coman_id: COMAN-PUN-01
+- coman_id: COMAN-HYD-01
   product_line: cultivated_chicken
-  available_from: '2022-04-01'
-  lead_time_weeks: 3
-  min_commit_kg_per_week: 200.0
-  max_kg_per_week: 700.0
-  unit_cost_inr_per_kg: 540.0
+  available_from: '2022-03-01'
+  lead_time_weeks: 2
+  min_commit_kg_per_week: 300.0
+  max_kg_per_week: 1200.0
+  unit_cost_inr_per_kg: 510.0
 b2b_accounts_summary:
-  total_accounts: 8
+  total_accounts: 6
   pipeline_count: 1
   active_count: 5
-  churned_count: 1
-  paused_count: 1
+  churned_count: 0
+  paused_count: 0

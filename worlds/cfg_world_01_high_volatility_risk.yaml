@@ -1,21 +1,23 @@
-world_name: cfg_volatile_macro
+world_name: cfg_world_01_high_volatility_risk
 description: >
-  High macroeconomic and seasonal volatility. Characterized by deep cultural fasting dips during
-  Navratri and Shravan, sharp winter wedding surges, high consumer price sensitivity, and elevated D2C churn.
-  The marketing team frequently oscillates budgets in reactive closed-loop overcorrection.
+  World 01 — High Volatility & High Risk:
+  Extreme macroeconomic, seasonal, and behavioral volatility. Driven by sharp cultural fasting dips
+  during Navratri and Shravan (35-45% drop), extreme winter celebration peaks (+40%), intense consumer price
+  elasticity, and high customer churn. Marketing constantly oscillates budgets in reactive overcorrection,
+  and summer heatwaves strain transit cold-chain logistics.
 history_weeks: 156
 start_date: "2022-01-03"
 plan_weeks_ahead: 13
 
 demand_growth_rate_annual: 0.08
-seasonality_sensitivity: 1.65
+seasonality_sensitivity: 1.70
 wom_strength: 0.03
-d2c_repeat_rate: 0.28
-d2c_subscriber_fraction: 0.06
+d2c_repeat_rate: 0.26
+d2c_subscriber_fraction: 0.05
 ops_capacity_buffer: 1.25
 coman_activation_threshold: 0.90
-marketing_responsiveness: 1.45
-nps_baseline: 7.7
+marketing_responsiveness: 1.50
+nps_baseline: 7.5
 
 regions:
   - region_id: reg_delhi_ncr
@@ -66,7 +68,7 @@ skus:
     status: production
     expected_launch_date: "2022-01-03"
     shelf_life_days: 18
-    unit_cost_inr_per_kg: 440.00
+    unit_cost_inr_per_kg: 445.00
     list_price_d2c_inr_per_kg: 920.00
   - sku_id: SKU-CHK-1KG
     product_line: cultivated_chicken
@@ -74,7 +76,7 @@ skus:
     status: production
     expected_launch_date: "2022-01-03"
     shelf_life_days: 18
-    unit_cost_inr_per_kg: 410.00
+    unit_cost_inr_per_kg: 415.00
     list_price_d2c_inr_per_kg: 830.00
   - sku_id: SKU-MIC-500G
     product_line: microbial
@@ -108,17 +110,17 @@ facilities:
     nominal_batches_per_week: 3
     planned_yield_per_batch_kg: 420.00
     cycle_days: 7
-    failure_rate: 0.05
-    partial_rate: 0.09
-    yield_std_pct: 0.08
+    failure_rate: 0.06
+    partial_rate: 0.10
+    yield_std_pct: 0.09
   - facility_id: FAC-PUN-01
     product_line: cultivated_chicken
     nominal_batches_per_week: 2
     planned_yield_per_batch_kg: 320.00
     cycle_days: 7
-    failure_rate: 0.06
-    partial_rate: 0.10
-    yield_std_pct: 0.09
+    failure_rate: 0.07
+    partial_rate: 0.11
+    yield_std_pct: 0.10
 
 coman_contracts:
   - coman_id: COMAN-PUN-01
@@ -127,9 +129,9 @@ coman_contracts:
     lead_time_weeks: 3
     min_commit_kg_per_week: 200.00
     max_kg_per_week: 700.00
-    unit_cost_inr_per_kg: 540.00
+    unit_cost_inr_per_kg: 545.00
     min_active_weeks: 4
-    reliability: 0.94
+    reliability: 0.93
 
 marketing_campaigns:
   - channel: D2C

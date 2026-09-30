@@ -71,8 +71,7 @@ class B2BAgentManager:
                 )
             else:
                 contract_start = onboard_date
-                contract_end = contract_start + timedelta(weeks=tmpl.contract_duration_weeks)
-
+                
                 churn_d = None
                 if tmpl.churn_week_offset:
                     churn_d = start_date + timedelta(weeks=tmpl.churn_week_offset)
@@ -82,6 +81,23 @@ class B2BAgentManager:
                 if tmpl.pause_week_start and tmpl.pause_week_end:
                     pause_s = start_date + timedelta(weeks=tmpl.pause_week_start)
                     pause_e = start_date + timedelta(weeks=tmpl.pause_week_end)
+
+                if tmpl.status_at_end == "churned":
+                    # Contract ended on churn date
+                    contract_end = churn_d or (contract_start + timedelta(weeks=tmpl.contract_duration_weeks))
+                elif tmpl.status_at_end == "active":
+                    # Real forward agreement: either evergreen (None) or forward renewed 1-2 years past history
+                    if tmpl.outlets_count > 10:
+                        # Major QSR / distributor: 2-year forward rolling contract
+                        contract_end = self.history_end_date + timedelta(weeks=104)
+                    elif tmpl.outlets_count > 3:
+                        # Standard 1-year forward renewal
+                        contract_end = self.history_end_date + timedelta(weeks=52)
+                    else:
+                        # Evergreen / auto-renewing agreement (null contract_end per contract spec)
+                        contract_end = None
+                else:  # paused
+                    contract_end = self.history_end_date + timedelta(weeks=52)
 
                 acc = SimulatedB2BAccount(
                     account_id=tmpl.account_id,

@@ -1,9 +1,9 @@
 account_id,account_type,region_id,regions_served,outlets_count,status,onboarded_date,contract_start,contract_end,committed_kg_per_month,contract_price_inr_per_kg,shortfall_penalty_inr_per_kg,requested_start_date,requested_kg_per_month
-ACC-QSR-501,qsr_chain,reg_delhi_ncr,reg_delhi_ncr|reg_mumbai|reg_bengaluru,38,active,2022-01-17,2022-01-17,2024-12-30,3800.00,590.00,250.00,,
-ACC-DIST-501,distributor,reg_mumbai,reg_mumbai|reg_pune|reg_ahmedabad,24,active,2022-02-14,2022-02-14,2024-12-30,2800.00,580.00,240.00,,
-ACC-HOTEL-501,hotel,reg_delhi_ncr,reg_delhi_ncr,3,active,2022-03-28,2022-03-28,2024-12-30,900.00,650.00,170.00,,
+ACC-QSR-501,qsr_chain,reg_delhi_ncr,reg_delhi_ncr|reg_mumbai|reg_bengaluru,38,active,2022-01-17,2022-01-17,2026-12-28,3800.00,590.00,250.00,,
+ACC-DIST-501,distributor,reg_mumbai,reg_mumbai|reg_pune|reg_ahmedabad,24,active,2022-02-14,2022-02-14,2026-12-28,2800.00,580.00,240.00,,
+ACC-HOTEL-501,hotel,reg_delhi_ncr,reg_delhi_ncr,3,active,2022-03-28,2022-03-28,,900.00,650.00,170.00,,
 ACC-CATR-501,caterer,reg_hyderabad,reg_hyderabad,1,churned,2022-04-25,2022-04-25,2023-06-12,1200.00,640.00,180.00,,
-ACC-REST-501,restaurant,reg_chennai,reg_chennai,2,active,2022-06-20,2022-06-20,2024-12-30,350.00,690.00,120.00,,
-ACC-REST-502,restaurant,reg_kolkata,reg_kolkata,2,active,2022-08-15,2022-08-15,2024-12-30,300.00,695.00,110.00,,
-ACC-REST-503,restaurant,reg_chandigarh,reg_chandigarh,1,paused,2022-10-10,2022-10-10,2024-12-30,250.00,700.00,100.00,,
+ACC-REST-501,restaurant,reg_chennai,reg_chennai,2,active,2022-06-20,2022-06-20,,350.00,690.00,120.00,,
+ACC-REST-502,restaurant,reg_kolkata,reg_kolkata,2,active,2022-08-15,2022-08-15,,300.00,695.00,110.00,,
+ACC-REST-503,restaurant,reg_chandigarh,reg_chandigarh,1,paused,2022-10-10,2022-10-10,2025-12-29,250.00,700.00,100.00,,
 ACC-PIPE-501,qsr_chain,reg_hyderabad,reg_hyderabad|reg_chennai,15,pipeline,,,,,,,2025-01-13,2000.00

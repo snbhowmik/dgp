@@ -41,11 +41,13 @@ class ContractValidator:
         self.drop_dir = drop_dir
         self.errors: List[str] = []
         self.warnings: List[str] = []
+        self.total_fulfilled_kg = 0.0
 
     def validate_all(self) -> Tuple[bool, List[str], List[str]]:
         """Run complete validation suite. Returns (success, errors, warnings)."""
         self.errors = []
         self.warnings = []
+        self.total_fulfilled_kg = 0.0
 
         self._check_file_completeness_and_manifest()
         self._check_forbidden_words()
@@ -65,7 +67,7 @@ class ContractValidator:
         self._validate_coman(tables["coman_contracts.csv"], tables["coman_activity.csv"])
         self._validate_marketing_daily(tables["marketing_daily.csv"], tables)
         self._validate_marketing_plan(tables["marketing_plan.csv"], tables)
-        self._validate_orders(tables["orders.csv"], tables)
+        self._validate_orders(tables)
         self._validate_nps(tables["nps_responses.csv"], tables)
         self._validate_capacity_fulfillment_conservation(tables)
 
@@ -117,10 +119,12 @@ class ContractValidator:
             for fname in files:
                 fpath = os.path.join(root, fname)
                 with open(fpath, "r", encoding="utf-8", errors="ignore") as f:
-                    content = f.read().lower()
-                    for word in FORBIDDEN_WORDS:
-                        if word in content:
-                            self.errors.append(f"Forbidden term '{word}' found in {fname}")
+                    for line in f:
+                        line_lower = line.lower()
+                        for word in FORBIDDEN_WORDS:
+                            if word in line_lower:
+                                self.errors.append(f"Forbidden term '{word}' found in {fname}")
+                                break
 
     def _load_tables(self) -> Dict[str, List[Dict[str, str]]]:
         tables = {}
@@ -133,9 +137,13 @@ class ContractValidator:
                 header = next(reader, None)
                 if header != expected_headers:
                     self.errors.append(f"{fname} headers do not match contract. Expected {expected_headers}, got {header}")
-                f.seek(0)
-                dict_reader = csv.DictReader(f)
-                tables[fname] = list(dict_reader)
+                if fname == "orders.csv":
+                    # Stream orders.csv separately in _validate_orders to conserve RAM
+                    tables[fname] = []
+                else:
+                    f.seek(0)
+                    dict_reader = csv.DictReader(f)
+                    tables[fname] = list(dict_reader)
         return tables
 
     def _validate_regions(self, rows: List[Dict[str, str]]):
@@ -308,57 +316,64 @@ class ContractValidator:
             if r["region_id"] not in valid_regions:
                 self.errors.append(f"marketing_plan.csv invalid FK region_id: {r['region_id']}")
 
-    def _validate_orders(self, rows: List[Dict[str, str]], tables: Dict[str, List[Dict[str, str]]]):
+    def _validate_orders(self, tables: Dict[str, List[Dict[str, str]]]):
         valid_regions = {r["region_id"] for r in tables.get("regions.csv", [])}
         valid_skus = {r["sku_id"] for r in tables.get("skus.csv", [])}
         valid_customers = {r["customer_id"] for r in tables.get("customers.csv", [])}
         valid_accounts = {r["account_id"] for r in tables.get("b2b_accounts.csv", [])}
 
-        for r in rows:
-            ch = r["channel"]
-            if ch not in ALLOWED_CHANNELS:
-                self.errors.append(f"orders.csv invalid channel: {ch}")
+        orders_path = os.path.join(self.drop_dir, "orders.csv")
+        if not os.path.exists(orders_path):
+            return
 
-            if ch == "D2C":
-                if not r["customer_id"] or r["customer_id"] not in valid_customers:
-                    self.errors.append(f"orders.csv D2C order {r['order_id']} invalid FK customer_id: '{r['customer_id']}'")
-                if r["account_id"]:
-                    self.errors.append(f"orders.csv D2C order {r['order_id']} must have empty account_id")
-            else:
-                if not r["account_id"] or r["account_id"] not in valid_accounts:
-                    self.errors.append(f"orders.csv B2B order {r['order_id']} invalid FK account_id: '{r['account_id']}'")
-                if r["customer_id"]:
-                    self.errors.append(f"orders.csv B2B order {r['order_id']} must have empty customer_id")
+        with open(orders_path, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f)
+            for r in reader:
+                ch = r["channel"]
+                if ch not in ALLOWED_CHANNELS:
+                    self.errors.append(f"orders.csv invalid channel: {ch}")
 
-            if r["region_id"] not in valid_regions:
-                self.errors.append(f"orders.csv invalid FK region_id: {r['region_id']}")
-            if r["sku_id"] not in valid_skus:
-                self.errors.append(f"orders.csv invalid FK sku_id: {r['sku_id']}")
+                if ch == "D2C":
+                    if not r["customer_id"] or r["customer_id"] not in valid_customers:
+                        self.errors.append(f"orders.csv D2C order {r['order_id']} invalid FK customer_id: '{r['customer_id']}'")
+                    if r["account_id"]:
+                        self.errors.append(f"orders.csv D2C order {r['order_id']} must have empty account_id")
+                else:
+                    if not r["account_id"] or r["account_id"] not in valid_accounts:
+                        self.errors.append(f"orders.csv B2B order {r['order_id']} invalid FK account_id: '{r['account_id']}'")
+                    if r["customer_id"]:
+                        self.errors.append(f"orders.csv B2B order {r['order_id']} must have empty customer_id")
 
-            st = r["status"]
-            if st not in ALLOWED_ORDER_STATUSES:
-                self.errors.append(f"orders.csv invalid status: {st}")
+                if r["region_id"] not in valid_regions:
+                    self.errors.append(f"orders.csv invalid FK region_id: {r['region_id']}")
+                if r["sku_id"] not in valid_skus:
+                    self.errors.append(f"orders.csv invalid FK sku_id: {r['sku_id']}")
 
-            req = float(r["requested_qty_kg"])
-            ful = float(r["fulfilled_qty_kg"])
+                st = r["status"]
+                if st not in ALLOWED_ORDER_STATUSES:
+                    self.errors.append(f"orders.csv invalid status: {st}")
 
-            if req < ful:
-                self.errors.append(f"orders.csv invariant violated: requested ({req}) < fulfilled ({ful}) in {r['order_id']}")
-            if ful < 0:
-                self.errors.append(f"orders.csv negative fulfilled_qty_kg: {ful} in {r['order_id']}")
+                req = float(r["requested_qty_kg"])
+                ful = float(r["fulfilled_qty_kg"])
+                self.total_fulfilled_kg += ful
 
-            # Status consistency
-            if st == "fulfilled" and abs(req - ful) > 1e-4:
-                self.errors.append(f"Order {r['order_id']} status is fulfilled but requested != fulfilled ({req} vs {ful})")
-            if st == "partial" and (ful <= 0 or ful >= req):
-                self.errors.append(f"Order {r['order_id']} status is partial but fulfilled is {ful} (requested {req})")
-            if st in ("waitlisted", "cancelled_stockout", "cancelled_other") and ful > 0:
-                self.errors.append(f"Order {r['order_id']} status is {st} but fulfilled is {ful} > 0")
+                if req < ful:
+                    self.errors.append(f"orders.csv invariant violated: requested ({req}) < fulfilled ({ful}) in {r['order_id']}")
+                if ful < 0:
+                    self.errors.append(f"orders.csv negative fulfilled_qty_kg: {ful} in {r['order_id']}")
 
-            if ful > 0 and not r["delivered_date"]:
-                self.errors.append(f"Order {r['order_id']} has fulfilled_qty > 0 but missing delivered_date")
-            if ful == 0 and r["delivered_date"]:
-                self.errors.append(f"Order {r['order_id']} has fulfilled_qty = 0 but delivered_date is set: {r['delivered_date']}")
+                # Status consistency
+                if st == "fulfilled" and abs(req - ful) > 1e-4:
+                    self.errors.append(f"Order {r['order_id']} status is fulfilled but requested != fulfilled ({req} vs {ful})")
+                if st == "partial" and (ful <= 0 or ful >= req):
+                    self.errors.append(f"Order {r['order_id']} status is partial but fulfilled is {ful} (requested {req})")
+                if st in ("waitlisted", "cancelled_stockout", "cancelled_other") and ful > 0:
+                    self.errors.append(f"Order {r['order_id']} status is {st} but fulfilled is {ful} > 0")
+
+                if ful > 0 and not r["delivered_date"]:
+                    self.errors.append(f"Order {r['order_id']} has fulfilled_qty > 0 but missing delivered_date")
+                if ful == 0 and r["delivered_date"]:
+                    self.errors.append(f"Order {r['order_id']} has fulfilled_qty = 0 but delivered_date is set: {r['delivered_date']}")
 
     def _validate_nps(self, rows: List[Dict[str, str]], tables: Dict[str, List[Dict[str, str]]]):
         valid_regions = {r["region_id"] for r in tables.get("regions.csv", [])}
@@ -391,9 +406,7 @@ class ContractValidator:
         coman = tables.get("coman_activity.csv", [])
         total_coman_delivered = sum(float(c["delivered_kg"]) for c in coman)
 
-        orders = tables.get("orders.csv", [])
-        total_fulfilled = sum(float(o["fulfilled_qty_kg"]) for o in orders)
-
+        total_fulfilled = self.total_fulfilled_kg
         total_production = total_in_house_yield + total_coman_delivered
 
         if total_fulfilled > total_production + 1e-4:

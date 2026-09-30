@@ -1,8 +1,10 @@
-world_name: cfg_structural_break
+world_name: cfg_world_05_structural_break
 description: >
-  Major structural break midway through history (Week 78). Six new Tier-1 and Tier-2 regional cold-chain
-  routes open simultaneously with the commercial launch of the Mycelium product line (SKU-MYC-500G).
-  Demand and capacity scale dramatically in the second half of history, shifting channel economics and regional mix.
+  World 05 — Structural Break & Strategic Transformation:
+  Major structural break midway through history (Week 78). Six new Tier-1 and Tier-2 cold-chain
+  distribution territories are unlocked simultaneously with the commercial scale-up of the Mycelium
+  product line (SKU-MYC-500G) moving from pilot into regular production. The company's total addressable
+  market, capacity ceiling, and product revenue mix permanently shift in the second half of history.
 history_weeks: 182
 start_date: "2022-01-03"
 plan_weeks_ahead: 13

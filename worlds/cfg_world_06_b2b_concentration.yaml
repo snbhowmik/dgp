@@ -1,7 +1,8 @@
-world_name: cfg_b2b_concentration
+world_name: cfg_world_06_b2b_concentration
 description: >
-  High B2B wholesale concentration and severe channel allocation conflict. Over 65% of total volume
-  is locked into major QSR chains and wholesale distributors carrying heavy shortfall penalties.
+  World 06 — B2B Key Account Concentration & Channel Squeeze:
+  High commercial concentration where over 65% of total production volume is dedicated to a massive national QSR
+  chain (38 outlets) and wholesale distributors carrying heavy shortfall penalties (INR 250/kg).
   Whenever bioreactor batches fluctuate, in-house inventory is prioritized to avoid B2B penalties,
   leaving D2C e-commerce heavily censored (stockouts, partials, waitlists) and causing D2C churn.
   An unexpected mid-history contract churn at Week 75 creates a sudden inventory surplus and perishable spoilage.
